@@ -15,9 +15,9 @@ import nodelogo from '../images/Node js - 24px.png'
 import nextlogo from '../images/Next js - 24px.png'
 import reactlogo from '../images/React - 24px.png'
 import arrowimg from '../images/right-up.png'
-import callus from '../images/Call us.png'
-import location from '../images/Location.png'
-import email from '../images/Email.png'
+import callusimg from '../images/Call us.png'
+import locationimg from '../images/Location.png'
+import emailimg from '../images/Email.png'
 import './Services.css'
 import { red } from '@mui/material/colors';
 
@@ -473,7 +473,8 @@ function Services() {
                     </AccordionSummary>
                     <AccordionDetails>
                       <Typography sx={{
-                        fontSize: {xs: 14, md: 18}
+                        fontSize: {xs: 14, md: 18},
+                        textAlign: "left"
                       }}>{faq.answer}</Typography>
                     </AccordionDetails>
                   </Accordion>
@@ -483,104 +484,155 @@ function Services() {
           </section>
 
           <section style={{ marginTop: "50px" }}>
-            <div className='contact-us'>
-              <h2>Contact us</h2>
-                <Box sx={{ padding: 4, display: "flex", flexDirection: { xs: "column", md: "row" }, alignItems: "center", justifyContent: "center" }}>
-              {/* Left Section */}
-              <Stack
-                spacing={3}
+            <div className="contact-us">
+              <Typography variant="h4" sx={{ fontSize: { xs: "1.5rem", sm: "2rem" }, textAlign: "center", marginBottom: 3 }}>
+                Contact us
+              </Typography>
+
+              <Box
                 sx={{
-                  width: { xs: "100%", md: "40%" },
-                  justifyContent: "flex-start",
-                  position: "relative",
-                  top: "-140px", // Moves all text up by 50px
+                  padding: { xs: 2, sm: 4 },
+                  display: "flex",
+                  flexDirection: { xs: "column", md: "row" },
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: { xs: 2, md: 4 },
                 }}
               >
-                <Typography variant="h5" fontWeight="bold" sx={{ marginTop: "-150px"}}>
-                  Let's Turn Your Vision Into Reality.
-                </Typography>
-                
-                <Stack direction="row" alignItems="flex-start" spacing={2}>
-                  <Avatar src="/location-icon.png" />
-                  <Stack>
-                    <Typography variant="body1" fontWeight="bold">
-                      Location:
-                    </Typography>
-                    <Typography variant="body2">
-                      Office No. 10, 2nd Floor, Chandra Pushpa, Hirachand Desai Rd, Opp. Ghatkopar Metro Station, Ghatkopar West, Mumbai, Maharashtra - 400086
-                    </Typography>
-                  </Stack>
-                </Stack>
-
-                <Stack direction="row" alignItems="flex-start" spacing={2}>
-                  <Avatar src="/email-icon.png" />
-                  <Stack>
-                    <Typography variant="body1" fontWeight="bold">
-                      Email:
-                    </Typography>
-                    <Typography variant="body2">
-                      info@kdigitalcurry.com
-                    </Typography>
-                  </Stack>
-                </Stack>
-
-                <Stack direction="row" alignItems="flex-start" spacing={2}>
-                  <Avatar src="/call-icon.png" />
-                  <Stack>
-                    <Typography variant="body1" fontWeight="bold">
-                      Call Us:
-                    </Typography>
-                    <Typography variant="body2">
-                      +91 970 246 4242
-                    </Typography>
-                  </Stack>
-                </Stack>
-              </Stack>
-
-              {/* Right Section - Contact Form */}
-              <Paper elevation={3} sx={{ padding: 4, marginTop: { xs: 4, md: 0 }, width: { xs: "100%", md: "50%" } }}>
-                <Formik
-                  initialValues={{
-                    fullName: "",
-                    companyName: "",
-                    mobileNumber: "",
-                    email: "",
-                    country: "",
-                    city: "",
-                    requirement: "",
-                  }}
-                  validationSchema={validationSchema}
-                  onSubmit={(values) => {
-                    console.log("Form Submitted", values);
+                {/* Left Section */}
+                <Stack
+                  spacing={3}
+                  sx={{
+                    width: { xs: "100%", md: "40%" },
+                    position: "relative",
+                    top: { xs: "-40px", md: "-80px" }, // Adjusts text position based on screen size
                   }}
                 >
-                  {({ errors, touched }) => (
-                    <Form>
-                      <Stack spacing={2}>
-                        <Field name="fullName" as={TextField} label="Full Name" fullWidth error={touched.fullName && Boolean(errors.fullName)} helperText={touched.fullName && errors.fullName} />
-                        <Field name="companyName" as={TextField} label="Company Name" fullWidth error={touched.companyName && Boolean(errors.companyName)} helperText={touched.companyName && errors.companyName} />
-                        <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
-                          <Field name="mobileNumber" as={TextField} label="Mobile Number" fullWidth error={touched.mobileNumber && Boolean(errors.mobileNumber)} helperText={touched.mobileNumber && errors.mobileNumber} />
-                          <Field name="email" as={TextField} label="Email" fullWidth error={touched.email && Boolean(errors.email)} helperText={touched.email && errors.email} />
-                        </Stack>
-                        <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
-                          <Field name="country" as={TextField} label="Country" fullWidth error={touched.country && Boolean(errors.country)} helperText={touched.country && errors.country} />
-                          <Field name="city" as={TextField} label="City" fullWidth error={touched.city && Boolean(errors.city)} helperText={touched.city && errors.city} />
-                        </Stack>
-                        <Field name="requirement" as={TextField} label="Requirement" multiline rows={3} fullWidth error={touched.requirement && Boolean(errors.requirement)} helperText={touched.requirement && errors.requirement} />
-                        <Button type="submit" variant="contained" fullWidth>
-                          Submit
-                        </Button>
+                  <Typography variant="h5" sx={{ fontSize: { xs: "1.2rem", sm: "1.5rem" }, fontWeight: "bold" }}>
+                    Let's Turn Your Vision Into Reality.
+                  </Typography>
+
+                  {/* Contact Details */}
+                  {[
+                    { img: locationimg, title: "Location:", text: "Office No. 10, 2nd Floor, Chandra Pushpa, Hirachand Desai Rd, Opp. Ghatkopar Metro Station, Ghatkopar West, Mumbai, Maharashtra - 400086" },
+                    { img: emailimg, title: "Email:", text: "info@kdigitalcurry.com" },
+                    { img: callusimg, title: "Call Us:", text: "+91 970 246 4242" },
+                  ].map((item, index) => (
+                    <Stack key={index} direction="row" alignItems="flex-start" spacing={2}>
+                      <img src={item.img} alt={item.title.toLowerCase()} style={{ width: 35, height: 35, marginTop: 5 }} />
+                      <Stack>
+                        <Typography variant="body1" fontWeight="bold">
+                          {item.title}
+                        </Typography>
+                        <Typography variant="body2" sx={{ width: { xs: "100%", sm: "80%", md: "300px" } }}>
+                          {item.text}
+                        </Typography>
                       </Stack>
-                    </Form>
-                  )}
-                </Formik>
-              </Paper>
-            </Box>
+                    </Stack>
+                  ))}
+                </Stack>
+
+                {/* Right Section - Contact Form */}
+                <Paper
+                  elevation={3}
+                  sx={{
+                    padding: { xs: 2, sm: 4 },
+                    width: { xs: "100%", md: "40%" },
+                    backgroundColor: "#e5e5e5",
+                  }}
+                >
+                  <Formik
+                    initialValues={{
+                      fullName: "",
+                      companyName: "",
+                      mobileNumber: "",
+                      email: "",
+                      country: "",
+                      city: "",
+                      requirement: "",
+                    }}
+                    validationSchema={validationSchema}
+                    onSubmit={(values) => console.log("Form Submitted", values)}
+                  >
+                    {({ errors, touched }) => (
+                      <Form>
+                        <Stack spacing={2}>
+                          <Field
+                            name="fullName"
+                            as={TextField}
+                            label="Full Name"
+                            fullWidth
+                            error={touched.fullName && Boolean(errors.fullName)}
+                            helperText={touched.fullName && errors.fullName}
+                            sx={{ fontSize: { xs: "0.8rem", sm: "1rem" }, height: { xs: 40, sm: 50 } }}
+                          />
+                          <Field
+                            name="companyName"
+                            as={TextField}
+                            label="Company Name"
+                            fullWidth
+                            error={touched.companyName && Boolean(errors.companyName)}
+                            helperText={touched.companyName && errors.companyName}
+                          />
+                          <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
+                            <Field
+                              name="mobileNumber"
+                              as={TextField}
+                              label="Mobile Number"
+                              fullWidth
+                              error={touched.mobileNumber && Boolean(errors.mobileNumber)}
+                              helperText={touched.mobileNumber && errors.mobileNumber}
+                            />
+                            <Field
+                              name="email"
+                              as={TextField}
+                              label="Email"
+                              fullWidth
+                              error={touched.email && Boolean(errors.email)}
+                              helperText={touched.email && errors.email}
+                            />
+                          </Stack>
+                          <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
+                            <Field
+                              name="country"
+                              as={TextField}
+                              label="Country"
+                              fullWidth
+                              error={touched.country && Boolean(errors.country)}
+                              helperText={touched.country && errors.country}
+                            />
+                            <Field
+                              name="city"
+                              as={TextField}
+                              label="City"
+                              fullWidth
+                              error={touched.city && Boolean(errors.city)}
+                              helperText={touched.city && errors.city}
+                            />
+                          </Stack>
+                          <Field
+                            name="requirement"
+                            as={TextField}
+                            label="Requirement"
+                            multiline
+                            rows={1}
+                            fullWidth
+                            error={touched.requirement && Boolean(errors.requirement)}
+                            helperText={touched.requirement && errors.requirement}
+                          />
+                          <Button type="submit" variant="contained" fullWidth sx={{backgroundColor: "#C8102E"}}>
+                            Submit
+                          </Button>
+                        </Stack>
+                      </Form>
+                    )}
+                  </Formik>
+                </Paper>
+              </Box>
             </div>
           </section>
 
-    </div>
+        </div>
     )
 }
 
