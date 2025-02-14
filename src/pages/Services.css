@@ -1,10 +1,10 @@
 /* General Styling */
 .services {
-    display: flex;
     justify-content: center;
     align-items: center;
     padding: 50px 20px;
     background-color: #ffffff;
+    margin-top: -30px;
 }
 
 /* Main Container */
@@ -62,6 +62,7 @@
     align-items: center; /* Center horizontally */
     margin-bottom: 100px;
     margin-top: 100px;
+    margin-left: 0px;
 }
 
 .case-studies h2, .studies-p {
@@ -76,17 +77,31 @@
   display: none !important;
 }
 @media (max-width: 768px) {
-    .btn-prev, 
-    .btn-next {
-      margin-top: 500px;; /* Move below "Get Started" button */
-      margin-right: 200px;
+    .btn-prev, .btn-next {
+      position: relative; /* Instead of absolute, keep it in flow */
+      bottom: unset; /* Remove absolute positioning */
+      left: unset; /* Reset left */
+      transform: none; /* Remove centering transform */
+      display: inline-flex; /* Ensure they are next to each other */
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px; /* Space below "Get Started Now" button */
     }
-
+  
+    /* Center the buttons as a group */
+    .navigation-buttons {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin-top: 10px; /* Adjust to create space */
+    }
+  
     .btn-prev {
-      margin-left: -40px; /* Push left */
+      margin-right: 10px; /* Space between buttons */
     }
+  }
 
-    .btn-next {
-      margin-left: 40px; /* Push right */
-    }
+.contact-us h2{
+    text-align: center;
+    margin-bottom: 20px;
 }
