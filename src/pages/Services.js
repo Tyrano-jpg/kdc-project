@@ -28,7 +28,7 @@ function Services() {
           id: 1,
           image: heroImg, // Replace with actual image URL
           title: "Project Name",
-          description: "Lorem Ipsum Dolor Sit Amet Consectetur. Penatibus Viverra Arcu Aget...",
+          description: "Lorem Ipsum Dolor Sit Amet Consectetur. Penatibus Viverra Arcu Aget...Lorem Ipsum Dolor Sit Amet Consectetur. Penatibus Viverra Arcu Aget",
           tags: ["Web Development", "CMS Development"],
         },
         {
@@ -143,12 +143,22 @@ function Services() {
                 mx: "9px" // Adds more space between cards
                 }}
             >
-                <Card sx={{ p: 3, bgcolor: "#F4F4F4", borderRadius: 3, boxShadow: 0, width: "100%" }}>
+                <Card sx={{
+                        display: "flex",
+                        flexDirection: { xs: "column", md: "row" },
+                        height: { xs: "auto", md: "320px" }, // Increased height to fit navigation buttons
+                        p: 2,
+                        maxWidth: "100%",
+                        boxShadow: 3,
+                        borderRadius: 3,
+                        bgcolor: "#e5e5e5",
+                        position: "relative",
+                      }}>
                 <CardContent>
                 <img 
                     src={service.img} 
                     alt={service.title} 
-                    style={{ width: 40, height: 40, marginBottom: "16px" }} 
+                    style={{ width: 16, height: 16, marginLeft: 8 }} 
                 />
                     <Typography variant="h6" fontWeight="bold" sx={{ fontSize: '24px', fontWeight: '500' }}>{service.title}</Typography>
                     <Typography variant="body2" color="textSecondary" sx={{ fontSize: '20px', fontWeight: '400' }}>{service.description}</Typography>
@@ -164,7 +174,7 @@ function Services() {
     <div className="case-studies">
       <p className="studies-p">Case Studies</p>
       <h2 className="studies-h2">Explore Success Stories</h2>
-      <Box
+      <Box className="navigation-buttons"
         sx={{
           display: "flex",
           justifyContent: "center",
@@ -180,11 +190,33 @@ function Services() {
           onClick={() => swiperRef.current?.slidePrev()}
           sx={{
             position: "absolute",
+            display: "flex", 
+            alignItems: "center",
+            "@media (min-width: 320px)": {
+            marginTop: "15px",
+            marginBottom: "-15px",
+            },
+            "@media (min-width: 375px)": {
+            marginTop: "15px",
+            marginBottom: "-15px",
+            marginRight: "25px"
+            },
+            "@media (min-width: 425px)": {
+            marginTop: "15px",
+            marginBottom: "5px",
+            marginRight: "50px"
+            },
+            "@media (min-width: 768px)": {
+            marginTop: "20px",
+            marginBottom: "-10px",
+            marginRight: "10px"
+            },
+            justifyContent: "center",
             bottom: 40, // Always at the bottom
-            right: { xs: 80, sm: 110 }, // Moves inward on small screens
+            right: { xs: 155, sm: 110 }, // Moves inward on small screens
             zIndex: 10,
             minWidth: 40,
-            height: 40,
+            height: {xs: 30, sm: 30, md: 40},
             bgcolor: "rgba(0,0,0,0.6)",
             color: "white",
             borderRadius: "50%",
@@ -192,7 +224,7 @@ function Services() {
           }}
           
         >
-          <ArrowBackIosIcon fontSize="small" />
+          <ArrowBackIosIcon fontSize="small" sx={{ marginLeft: "4px", marginRight:"-3px" }} />
         </Button>
 
         <Button
@@ -201,10 +233,29 @@ function Services() {
           sx={{
             position: "absolute",
             bottom: 40, // Always at the bottom
-            right: { xs: 20, sm: 50 }, // Moves inward on small screens
+            right: { xs: 90, sm: 50 }, // Moves inward on small screens
             zIndex: 10,
             minWidth: 40,
-            height: 40,
+            height: {xs: 30, sm: 30, md: 40},
+            "@media (min-width: 320px)": {
+            marginTop: "15px",
+            marginBottom: "-15px",
+            },
+            "@media (min-width: 375px)": {
+            marginTop: "15px",
+            marginBottom: "-15px",
+            marginRight: "25px"
+            },
+            "@media (min-width: 425px)": {
+            marginTop: "15px",
+            marginBottom: "5px",
+            marginRight: "50px"
+            },
+            "@media (min-width: 768px)": {
+            marginTop: "20px",
+            marginBottom: "-10px",
+            marginRight: "10px"
+            },
             bgcolor: "rgba(0,0,0,0.6)",
             color: "white",
             borderRadius: "50%",
@@ -230,15 +281,30 @@ function Services() {
                 sx={{
                   display: "flex",
                   flexDirection: { xs: "column", md: "row" },
-                  height: { xs: "auto", md: "350px" },
-                  p: 2,
-                  maxWidth: "100%",
-                  boxShadow: 3,
-                  borderRadius: 3,
-                  bgcolor: "#e5e5e5",
-                  position: "relative",
-                }}
-              >
+                  height: "350px",
+                  "@media (max-width: 1024px)": {
+                  height: "420px",
+                  },
+                  "@media (max-width: 768px)": {
+                    height: "580px",
+                  },
+                  "@media (max-width: 425px)": {
+                    height: "540px",
+                  },
+                  "@media (max-width: 375px)": {
+                    height: "520px",
+                  },
+                  "@media (max-width: 320px)": {
+                    height: "500px",
+                  },
+                    p: 2,
+                    maxWidth: "100%",
+                    boxShadow: "none",
+                    borderRadius: 3,
+                    bgcolor: "#e5e5e5",
+                    position: "relative",
+                  }}
+                >
                 {/* Progress Bar (Full Width on Small Screens) */}
                 <Box
                   sx={{
@@ -268,6 +334,7 @@ function Services() {
                     width: { xs: "100%", md: "50%" },
                     height: { xs: "auto", md: "100%" },
                     borderRadius: 2,
+                    backgroundColor: "#e5e5e5",
                   }}
                 />
 
@@ -288,8 +355,8 @@ function Services() {
                     sx={{
                       fontSize: { xs: "1.2rem", md: "1.5rem" },
                       position: "relative",
-                      top: { xs: "0px", md: "-70px" },
-                      left: "20px"
+                      top: { xs: "0px", md: "-50px" },
+                      left: {xs: "0px", md: "20px"}
                     }}
                   >
                     {card.title}
@@ -301,8 +368,8 @@ function Services() {
                       mt: 1,
                       fontSize: { xs: "0.9rem", md: "1rem" },
                       position: "relative",
-                      left: "20px",
-                      top: { xs: "0px", md: "-70px" }, // Adjusted for responsiveness
+                      left: {xs: "0px", md: "20px"},
+                      top: { xs: "0px", md: "-50px" }, // Adjusted for responsiveness
                     }}
                   >
                     {card.description}
@@ -315,8 +382,8 @@ function Services() {
                         color="grey"
                         sx={{
                           position: "relative",
-                          top: { xs: "0px", md: "-70px" },
-                          left: "20px"
+                          top: { xs: "0px", md: "-50px" },
+                          left: {xs: "0px", md: "20px"}
                         }}
                       >
                         • {tag}
@@ -329,9 +396,25 @@ function Services() {
                       mt: 2,
                       alignSelf: { xs: "center", md: "flex-start" },
                       bgcolor: "#C8102E",
+                      width: {xs: "165px", md: "220px"},
                       position: "relative",
-                      top: { xs: "0px", md: "-70px" },
-                      left: "15px" // Fixes overlap on small screens
+                      height: {xs: "20px", md: "45px"},
+                      
+                  "@media (max-width: 768px)": {
+                    height: "30px",
+                  },
+                  "@media (max-width: 425px)": {
+                    height: "30px",
+                  },
+                  "@media (max-width: 375px)": {
+                    height: "20px",
+                  },
+                  "@media (max-width: 320px)": {
+                    height: "30px",
+                  },
+                      top: { xs: "0px", md: "-50px" },
+                      fontSize: {xs: "10px", md: "15px"},
+                      left: {xs: "0px", md: "15px"} // Fixes overlap on small screens
                     }}
                   >
                     Get Started Now
