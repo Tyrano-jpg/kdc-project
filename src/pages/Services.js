@@ -4,7 +4,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import { Navigation, Pagination, EffectCoverflow } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
@@ -72,45 +72,83 @@ function Services() {
         requirement: Yup.string().required("Requirement is required"),
       });
 
+      const testimonials = [
+        {
+          name: "Client Name",
+          position: "Company Name",
+          feedback:
+            "❝ They consistently provide innovative web solutions tailored to our evolving needs. Their strategic approach and technical expertise have significantly enhanced our digital presence. ❞",
+        },
+        {
+          name: "Kristin Watson",
+          position: "Human Resource Manager",
+          feedback:
+            "❝ Their team exceeded our expectations, delivering a highly scalable solution that perfectly aligned with our business goals. Their commitment to excellence and attention to detail made all the difference. ❞",
+        },
+        {
+          name: "Client Name",
+          position: "Company Name",
+          feedback:
+            "❝ From initial consultation to final delivery, their team demonstrated unmatched professionalism and expertise. They not only met our expectations but helped us achieve substantial growth. ❞",
+        },
+      ];
+
     return (
         <div>
-          <section className="services">
+          <section className="home">
             <Box
               component="section"
               sx={{
                 display: "flex",
-                flexDirection: { xs: "column", sm: "column", md: "row" }, // Image below text for tablets (sm)
+                flexDirection: { xs: "column", sm: "column", md: "row" },
                 alignItems: "center",
                 justifyContent: "space-between",
-                px: { xs: 3, sm: 6, md: 8 }, // Adjust padding for responsiveness
+                px: { xs: 3, sm: 6, md: 6, lg: 11, xl: "300" },
                 py: { xs: 4, md: 5 },
+                width: "100%", // Ensures it stretches across full width
               }}
             >
               {/* Left Content (Text) */}
               <Box
                 sx={{
-                  flex: 1,
-                  textAlign: { xs: "center", sm: "center", md: "left" }, // Center text on mobile & tablets
-                  maxWidth: { sm: "80%", md: "50%" }, // Limits text width
+                  flex: { xs: 1, sm: 1.2, md: 1.3 }, // More space for text, especially on tablets
+                  textAlign: { xs: "center", sm: "center", md: "left" },
+                  maxWidth: { xs: "100%", sm: "65%", md: "55%" }, // Adjust width dynamically
+                  p: 2,
                 }}
               >
                 <Typography
                   variant="h5"
                   fontWeight="700"
                   gutterBottom
-                  sx={{ fontSize: { xs: "29px", sm: "30px", md: "32px", lg: "28px" } }} // Adjust font size for responsiveness
+                  sx={{
+                    fontSize: { xs: "20px", sm: "22px", md: "24px", lg: "25px", "xl": "32px" },
+                    display: "inline-block",
+                    p: 1, // Padding inside the heading border
+                  }}
                 >
                   {`Web & CMS Development`}
                 </Typography>
-                <Typography variant="body1" color="textSecondary" mb={3}>
-                  Providing Tailored Web And CMS Development Solutions To Empower Seamless Content Management   And Dynamic Online Experiences
+                <Typography
+                  variant="body1"
+                  color="textSecondary"
+                  mb={3}
+                  sx={{
+                    fontSize: { xs: "13px", sm: "14px", md: "15px", lg: "17px", "xl": "20px" },
+                    display: "inline-block",
+                    maxWidth: { xs: "312px", sm: "413px", md: "514px", lg: "605px", "xl": "704px" },
+                    p: 1,
+                  }}
+                >
+                  "Providing tailored Web and CMS development solutions to empower seamless content management and dynamic online experiences
                 </Typography>
                 <Button
                   sx={{
                     backgroundColor: "black",
                     textTransform: "none",
-                    px: 4,
-                    py: 1.5,
+                    px: { xs: 2, sm: 3, md: 4 },
+                    py: { xs: 1, sm: 1.25, md: 1.5 },
+                    fontSize: { xs: "12px", sm: "14px", md: "16px" },
                   }}
                   variant="contained"
                 >
@@ -118,79 +156,124 @@ function Services() {
                 </Button>
               </Box>
 
-              {/* Right Content (Image) - Moves below text on tablets */}
+              {/* Right Content (Image) */}
               <Box
                 sx={{
-                  flex: { xs: 1, sm: 1, md: 1.5 }, // Keep image proportional
+                  flex: { xs: 1, sm: 0.8, md: 0.9 }, // Less space for image on tablets but keeps it balanced
                   display: "flex",
                   justifyContent: "center",
-                  mt: { xs: 4, sm: 4, md: 0 }, // Add margin on mobile & tablets
+                  alignItems: "center",
+                  maxWidth: { xs: "100%", sm: "75%", md: "45%" }, // Increase size on tablets
+                  p: 2,
                 }}
               >
                 <img
                   src={heroImg}
                   alt="Hero"
                   style={{
-                    width: "100%", // Makes it fill the container
-                    maxWidth: "90%", // Increases size on tablets
+                    width: "100%", // Ensures image fills its given space
+                    maxWidth: "599px", // Prevents excessive stretching
                     height: "auto",
                     borderRadius: "8px",
                   }}
                 />
               </Box>
             </Box>
+
           </section>
-
-
+          
           <section className='web-services'>
-              <div className='languages'>
-              <h1 style={{alignItems:"center"}}>Our Web & CMS Development Services</h1>
-              <Box
+        <div className='languages'>
+          <Typography
+            variant="h2"
+            sx={{
+              fontSize: { xs: "22px", sm: "26px", md: "32px" }, // Responsive font size
+              fontWeight: "bold",
+              textAlign: "center",
+              mb: 3,
+            }}
+          >
+            Our Web & CMS Development Services
+          </Typography>
+
+          <Box
+            sx={{
+              display: "flex",
+              flexWrap: "wrap",
+              rowGap: 3, // Keeps vertical spacing consistent
+              justifyContent: "center",
+              p: { xs: 0.1, sm: 1, md: 1 },
+            }}
+          >
+            {services.map((service, index) => {
+
+              return (
+                <Box
+                  key={index}
                   sx={{
-                  display: "flex",
-                  flexWrap: "wrap",
-                  rowGap: 3, // Keeps vertical spacing consistent
-                  justifyContent: "center",
-                  p: 3
+                    width: "calc(45% - 46px)", // Slightly increases horizontal spacing
+                    minWidth: "300px",
+                    display: "flex",
+                    justifyContent: "center",
+                    mx: "9px", // Adds more space between cards
+                    mb: { xs: "8px", sm: "10px", md: "16px", lg: "10px" }, // Adds vertical spaci
                   }}
-              >
-                  {services.map((service, index) => (
-                  <Box
-                      key={index}
-                      sx={{
-                      width: "calc(45% - 46px)", // Slightly increases horizontal spacing
-                      minWidth: "300px",
-                      display: "flex",
-                      justifyContent: "center",
-                      mx: "9px" // Adds more space between cards
-                      }}
+                >
+                  <Card
+                    sx={{
+                      bgcolor: "#F4F4F4",
+                      borderRadius: 3,
+                      boxShadow: 0,
+                      width: { xs: "250px", sm: "300px", md: "470px", lg: "500px", "xl": "698px" },
+                      height: { xs: "178px", sm: "240px", md: "228px", lg: "240px", "xl": "230px" },
+                      p: { xs: 1, sm: 3, md: 3, lg: 5 }
+                    }}
                   >
-                      <Card sx={{
-                              display: "flex",
-                              flexDirection: { xs: "column", md: "row" },
-                              height: { xs: "auto", md: "320px" }, // Increased height to fit navigation buttons
-                              p: 2,
-                              maxWidth: "100%",
-                              boxShadow: 3,
-                              borderRadius: 3,
-                              bgcolor: "#e5e5e5",
-                              position: "relative",
-                            }}>
-                      <CardContent>
-                      <img 
-                          src={service.img} 
-                          alt={service.title} 
-                          style={{ width: 16, height: 16, marginLeft: 8 }} 
+                    <CardContent>
+                      <Avatar
+                        src={service.img}
+                        alt={service.title}
+                        sx={{
+                          width: { xs: 40, sm: 48, md: 50, lg: 54, xl: 64 }, // Responsive width
+                          height: { xs: 40, sm: 48, md: 50, lg: 54, xl: 64 }, // Responsive height
+                          mb: { xs: 1, sm: 2, md: 3 }, // Adjust spacing
+                        }}
                       />
-                          <Typography variant="h6" fontWeight="bold" sx={{ fontSize: '24px', fontWeight: '500' }}>{service.title}</Typography>
-                          <Typography variant="body2" color="textSecondary" sx={{ fontSize: '20px', fontWeight: '400' }}>{service.description}</Typography>
-                      </CardContent>
-                      </Card>
-                  </Box>
-                  ))}
-              </Box>
-              </div>
-          </section>
+
+
+                      {/* Service Title */}
+                      <Typography
+                        variant="h6"
+                        fontWeight="500"
+                        sx={{
+                          fontSize: { xs: "14px", sm: "18px", md: "21px", lg: "22px", "xl": "24px" }, // Responsive font size
+                          marginBottom: "8px"
+                        }}
+                      >
+                        {service.title}
+                      </Typography>
+
+                      {/* Service Description */}
+                      <Typography
+                        variant="body2"
+                        color="textSecondary"
+                        sx={{
+                          fontSize: { xs: "10px", sm: "14px", md: "16px", lg: "18px", "xl": "20px" }, // Smaller font on mobile
+                        }}
+                      >
+                        {service.description}
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </Box>
+              );
+            })}
+          </Box>
+
+
+
+        </div>
+      </section>
 
           <section>
           <div className="case-studies">
@@ -450,6 +533,123 @@ function Services() {
             </Box>  
           </div>
           </section>
+
+          <section className="testimonials">
+            <div className="what-our-clients-say">
+              <h2>What Our Clients Say</h2>
+
+              <div className="boarder">
+                <Box
+                  sx={{
+                    width: "100%",
+                    maxWidth: "1900px",
+                    mx: "auto",
+                    overflow: "hidden",
+                    display: "flex",
+                    justifyContent: "center",
+                    height: "500px",
+                  }}
+                >
+                  <Swiper
+                    style={{
+                      width: "100%",
+                      height: "400px",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                    effect="coverflow"
+                    grabCursor={true}
+                    centeredSlides={true}
+                    slidesPerView={"auto"}
+                    spaceBetween={window.innerWidth < 768 ? 5 : 10}
+                    coverflowEffect={{
+                      rotate: 0,
+                      stretch: 5,
+                      depth: 120,
+                      modifier: 1,
+                      scale: 0.9,
+                      slideShadows: false,
+                    }}
+                    pagination={window.innerWidth <= 1024 ? { clickable: true } : false}
+                    modules={[EffectCoverflow, Pagination]}
+                  >
+                    {testimonials.map((testimonial, index) => (
+                      <SwiperSlide
+                        key={index}
+                        style={{
+                          width: "100%",
+                          maxWidth: "670px",
+                          height: "auto",
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          padding: "1px",
+                        }}
+                      >
+                        <Box
+                          sx={{
+                            width: { xs: "92%", sm: "88%", md: "87%", lg: "90%", xl: "670px" },
+                            height: { xs: "240px", sm: "250px", md: "260px", lg: "270px" },
+                            bgcolor: "#F4F4F4",
+                            display: "flex",
+                            flexDirection: "column",
+                            justifyContent: "flex-start",
+                            alignItems: "flex-start",
+                            borderRadius: 3,
+                            boxShadow: 3,
+                            textAlign: "left",
+                            p: { xs: 1.5, sm: 2, md: 3 },
+                            mx: { xs: 1, sm: 2, md: 1 },
+                          }}
+                        >
+                          <Box
+                            sx={{
+                              width: "80px",
+                              height: "40px",
+                              bgcolor: "gray",
+                              borderRadius: 1,
+                              mb: 1.5,
+                            }}
+                          />
+                          <Typography
+                            variant="h6"
+                            fontWeight="bold"
+                            sx={{
+                              fontSize: { xs: "1rem", sm: "1.1rem", md: "1.2rem" },
+                              mb: 0.5,
+                            }}
+                          >
+                            {testimonial.name}
+                          </Typography>
+                          <Typography
+                            variant="body2"
+                            color="gray"
+                            sx={{
+                              fontSize: { xs: "0.8rem", sm: "0.9rem", md: "1rem" },
+                              mb: 0.5,
+                            }}
+                          >
+                            {testimonial.position}
+                          </Typography>
+                          <Typography
+                            variant="body1"
+                            mt={1.5}
+                            sx={{
+                              fontSize: { xs: "0.9rem", sm: "1rem", md: "1.1rem" },
+                              lineHeight: { xs: "1.3", sm: "1.5", md: "1.6" },
+                            }}
+                          >
+                            {testimonial.feedback}
+                          </Typography>
+                        </Box>
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
+                </Box>
+              </div>
+            </div>
+          </section>;
 
           <section>
           <Container maxWidth={false} 
