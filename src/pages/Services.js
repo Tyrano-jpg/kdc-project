@@ -182,7 +182,7 @@ function Services() {
 
           </section>
 
-          <section className='web-services'>
+          <section className='web-services' style={{backgroundColor: "#f4f4f4", paddingTop: "40px", paddingBottom: "40px"}}>
             <div className='languages'>
               <Typography
                 variant="h2"
@@ -222,7 +222,7 @@ function Services() {
                     >
                       <Card
                         sx={{
-                          bgcolor: "#F4F4F4",
+                          bgcolor: "#FFF",
                           borderRadius: 3,
                           boxShadow: 0,
                           width: { xs: "250px", sm: "300px", md: "520px", lg: "600px", "xl": "698px" },
