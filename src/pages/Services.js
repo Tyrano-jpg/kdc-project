@@ -93,6 +93,13 @@ function Services() {
         },
       ];
 
+      const [expandedIndex, setExpandedIndex] = useState(null);
+
+const handleExpand = (index, isExpanded) => {
+  setExpandedIndex(isExpanded ? index : null);
+};
+
+
     return (
         <div>
           <section className="home">
@@ -273,6 +280,7 @@ function Services() {
             </div>
           </section>
 
+          {/* case studies */}
           <section>
           <div className="case-studies">
             <p className="studies-p">Case Studies</p>
@@ -280,11 +288,20 @@ function Services() {
             <Box className="navigation-buttons"
               sx={{
                 display: "flex",
+                "@media (min-width: 1024)": {
+                  maxWidth: "900px",
+                },
                 justifyContent: "center",
                 alignItems: "center",
                 position: "relative",
                 width: "90vw",
-                maxWidth: "1000px",
+                maxWidth: {
+                  xs: "100%", 
+                  sm: "600px", 
+                  md: "850px", 
+                  lg: "1200px", 
+                  xl: "1250px", 
+                },
                 margin: "auto",
               }}
             >
@@ -647,38 +664,70 @@ function Services() {
                 </Box>
               </div>
             </div>
-          </section>;
+          </section>
 
+          {/* FAQ */}
           <section>
-          <Container maxWidth={false} 
-            sx={{ maxWidth: "700px",
-            mt: 4,
-            textAlign: "center",
-            mb: 20,
-            }}>
-              <Typography variant="h4" gutterBottom sx={{ mb: 5, fontSize: {xs: 20, md: 28}}}>
-                Frequently Asked Questions (FAQ)
-              </Typography>
+          <Container
+      maxWidth={false}
+      sx={{
+        maxWidth: "700px",
+        mt: 4,
+        textAlign: "center",
+        mb: 20,
+      }}
+    >
+      <Typography
+        variant="h4"
+        gutterBottom
+        sx={{ mb: 5, fontSize: { xs: 20, md: 28 } }}
+      >
+        Frequently Asked Questions (FAQ)
+      </Typography>
 
-              <Box sx={{ backgroundColor: "#e5e5e5", borderRadius: 2, p: 3, mt: 2 }}>
-                {faqs.map((faq, index) => (
-                  <Accordion key={index} sx={{ backgroundColor: "#e5e5e5", mb: 1 }}>
-                    <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls={`panel${index}-content`} id={`panel${index}-header`}>
-                      <Typography variant="h6"
-                      sx={{
-                        fontSize: {xs: 14, md: 18}
-                      }}>{faq.question}</Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                      <Typography sx={{
-                        fontSize: {xs: 14, md: 18},
-                        textAlign: "left"
-                      }}>{faq.answer}</Typography>
-                    </AccordionDetails>
-                  </Accordion>
-                ))}
+      <Box sx={{ backgroundColor: "#e5e5e5", borderRadius: 2, p: 3, mt: 2 }}>
+        {faqs.map((faq, index) => (
+          <Box key={index} sx={{ mb: 3 }}> {/* Wrapper to separate each FAQ */}
+            {/* Question Box */}
+            <Box
+              sx={{
+                border: "1px solid #ccc",
+                borderRadius: "8px",
+                p: 1,
+                backgroundColor: "#e5e5e5",
+                cursor: "pointer",
+              }}
+              onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}
+            >
+              <Accordion expanded={false} sx={{ boxShadow: "none", backgroundColor: "#e5e5e5" }}>
+                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                  <Typography variant="h6" sx={{ fontSize: { xs: 14, md: 18 } }}>
+                    {faq.question}
+                  </Typography>
+                </AccordionSummary>
+              </Accordion>
+            </Box>
+
+            {/* Answer Box (Only shown when expanded) */}
+            {expandedIndex === index && (
+              <Box
+                sx={{
+                  border: "1px solid #ccc",
+                  borderRadius: "8px",
+                  p: 2,
+                  backgroundColor: "#e5e5e5",
+                  mt: 2, // Spacing between question and answer
+                }}
+              >
+                <Typography sx={{ fontSize: { xs: 14, md: 18 }, textAlign: "left" }}>
+                  {faq.answer}
+                </Typography>
               </Box>
-            </Container>
+            )}
+          </Box>
+        ))}
+      </Box>
+    </Container>
           </section>
 
           <section style={{ marginTop: "50px" }}>
