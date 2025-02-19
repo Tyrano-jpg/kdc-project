@@ -58,12 +58,17 @@ const Contactus = () => {
           }}
         >
           <img
+            className="wow animate__animated animate__fadeInDown"
+            data-wow-duration="1.5s"
             src={heroimg}
             alt="contactimg"
             style={{ width: "300px", height: "300px", objectFit: "cover" }}
           />
         </Box>
         <Typography
+          className="wow animate__animated animate__fadeIn"
+          data-wow-duration="1.5s"
+          data-wow-delay="1s"
           variant="h4"
           sx={{
             display: "flex",
@@ -84,6 +89,9 @@ const Contactus = () => {
           Let's kickstart your project together.
         </Typography>
         <Typography
+          className="wow animate__animated animate__fadeIn"
+          data-wow-duration="1.5s"
+          data-wow-delay="1s"
           variant="h6"
           sx={{
             display: "flex",
@@ -96,7 +104,7 @@ const Contactus = () => {
       </section>
 
       <section>
-        <Container maxWidth="md" sx={{ mb: "100px" }}>
+        <Container maxWidth="md" sx={{ mb: "100px", marginTop: "50px"}}>
           <Paper
             elevation={3}
             sx={{ p: 4, mt: 4, borderRadius: 2, bgcolor: "#e5e5e5" }}
@@ -162,10 +170,26 @@ const Contactus = () => {
                       formik.touched.country && Boolean(formik.errors.country)
                     }
                     helperText={formik.touched.country && formik.errors.country}
+                    onChange={(event) => {
+                      const selectedCountry = event.target.value;
+                      formik.setFieldValue("country", selectedCountry);
+
+                      // Perform any action based on the selected country
+                      console.log("Selected Country:", selectedCountry);
+
+                      // Example: Auto-fill the city field based on the country
+                      if (selectedCountry === "USA") {
+                        formik.setFieldValue("city", "New York");
+                      } else if (selectedCountry === "Canada") {
+                        formik.setFieldValue("city", "Toronto");
+                      }
+                    }}
                   >
                     <MenuItem value="USA">USA</MenuItem>
                     <MenuItem value="Canada">Canada</MenuItem>
+                    <MenuItem value="India">India</MenuItem>
                   </TextField>
+
                   <TextField
                     fullWidth
                     label="City"
@@ -228,7 +252,7 @@ const Contactus = () => {
                   fullWidth
                   variant="contained"
                   type="submit"
-                  sx={{ bgcolor: "#333", color: "#fff", mt: 2 }}
+                  sx={{ bgcolor: "#C8102E", color: "#fff", mt: 2 }}
                 >
                   Submit
                 </Button>
