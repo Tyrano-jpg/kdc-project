@@ -1,4 +1,5 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
+import "animate.css";
 import {
   Paper,
   Typography,
@@ -35,10 +36,15 @@ import arrowimg from "../images/right-up.png";
 import callusimg from "../images/Call us.png";
 import locationimg from "../images/Location.png";
 import emailimg from "../images/Email.png";
+import WOW from "wowjs";
 import "./Services.css";
 import { red } from "@mui/material/colors";
 
 function Services() {
+  useEffect(() => {
+    new WOW.WOW().init();
+  }, []);
+
   const services = [
     {
       title: "PHP Laravel Development",
@@ -161,16 +167,20 @@ function Services() {
             justifyContent: "space-between",
             px: { xs: 3, sm: 6, md: 6, lg: 11, xl: "300" },
             py: { xs: 4, md: 5 },
-            width: "100%", // Ensures it stretches across full width
+            width: "100%",
+            overflow: "hidden", // Ensures it stretches across full width
           }}
         >
           {/* Left Content (Text) */}
           <Box
+            className="wow animate__animated animate__fadeInLeft"
+            data-wow-duration="1.5s"
             sx={{
               flex: { xs: 1, sm: 1.2, md: 1.3 }, // More space for text, especially on tablets
               textAlign: { xs: "center", sm: "center", md: "left" },
               maxWidth: { xs: "100%", sm: "65%", md: "55%" }, // Adjust width dynamically
               p: 2,
+              overflow: "hidden",
             }}
           >
             <Typography
@@ -244,6 +254,8 @@ function Services() {
           >
             <img
               src={heroImg}
+              className="wow animate__animated animate__fadeInRight"
+              data-wow-duration="1.5s"
               alt="Hero"
               style={{
                 width: "100%", // Ensures image fills its given space
@@ -941,13 +953,19 @@ function Services() {
                     style={{ width: 40, height: 40, marginTop: 5 }}
                   />
                   <Stack>
-                    <Typography variant="body1" fontWeight="bold" sx={{marginLeft: "5px", marginBottom: "10px"}}>
+                    <Typography
+                      variant="body1"
+                      fontWeight="bold"
+                      sx={{ marginLeft: "5px", marginBottom: "10px" }}
+                    >
                       {item.title}
                     </Typography>
                     <Typography
                       variant="body2"
-                      sx={{ width: { xs: "100%", sm: "80%", md: "300px" },
-                    marginLeft: "5px" }}
+                      sx={{
+                        width: { xs: "100%", sm: "80%", md: "300px" },
+                        marginLeft: "5px",
+                      }}
                     >
                       {item.text}
                     </Typography>
