@@ -181,99 +181,97 @@ function Services() {
             </Box>
 
           </section>
-          
+
           <section className='web-services'>
-        <div className='languages'>
-          <Typography
-            variant="h2"
-            sx={{
-              fontSize: { xs: "22px", sm: "26px", md: "32px" }, // Responsive font size
-              fontWeight: "bold",
-              textAlign: "center",
-              mb: 3,
-            }}
-          >
-            Our Web & CMS Development Services
-          </Typography>
+            <div className='languages'>
+              <Typography
+                variant="h2"
+                sx={{
+                  fontSize: { xs: "22px", sm: "26px", md: "32px" }, // Responsive font size
+                  fontWeight: "bold",
+                  textAlign: "center",
+                  mb: 3,
+                }}
+              >
+                Our Web & CMS Development Services
+              </Typography>
 
-          <Box
-            sx={{
-              display: "flex",
-              flexWrap: "wrap",
-              rowGap: 3, // Keeps vertical spacing consistent
-              justifyContent: "center",
-              p: { xs: 0.1, sm: 1, md: 1 },
-            }}
-          >
-            {services.map((service, index) => {
+              <Box
+                sx={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  rowGap: 3, // Keeps vertical spacing consistent
+                  justifyContent: "center",
+                  p: { xs: 0.1, sm: 1, md: 1 },
+                }}
+              >
+                {services.map((service, index) => {
 
-              return (
-                <Box
-                  key={index}
-                  sx={{
-                    width: "calc(45% - 46px)", // Slightly increases horizontal spacing
-                    minWidth: "300px",
-                    display: "flex",
-                    justifyContent: "center",
-                    mx: "9px", // Adds more space between cards
-                    mb: { xs: "8px", sm: "10px", md: "16px", lg: "10px" }, // Adds vertical spaci
-                  }}
-                >
-                  <Card
-                    sx={{
-                      bgcolor: "#F4F4F4",
-                      borderRadius: 3,
-                      boxShadow: 0,
-                      width: { xs: "250px", sm: "300px", md: "470px", lg: "500px", "xl": "698px" },
-                      height: { xs: "178px", sm: "240px", md: "228px", lg: "240px", "xl": "230px" },
-                      p: { xs: 1, sm: 3, md: 3, lg: 5 }
-                    }}
-                  >
-                    <CardContent>
-                      <Avatar
-                        src={service.img}
-                        alt={service.title}
+                  return (
+                    <Box
+                      key={index}
+                      sx={{
+                        width: "calc(45% - 46px)", // Slightly increases horizontal spacing
+                        minWidth: "300px",
+                        display: "flex",
+                        justifyContent: "center",
+                        mx: "9px", // Adds more space between cards
+                        my: "-15px",
+                        mb: { xs: "8px", sm: "10px", md: "16px", lg: "10px" }, // Adds vertical spaci
+                      }}
+                    >
+                      <Card
                         sx={{
-                          width: { xs: 40, sm: 48, md: 50, lg: 54, xl: 64 }, // Responsive width
-                          height: { xs: 40, sm: 48, md: 50, lg: 54, xl: 64 }, // Responsive height
-                          mb: { xs: 1, sm: 2, md: 3 }, // Adjust spacing
-                        }}
-                      />
-
-
-                      {/* Service Title */}
-                      <Typography
-                        variant="h6"
-                        fontWeight="500"
-                        sx={{
-                          fontSize: { xs: "14px", sm: "18px", md: "21px", lg: "22px", "xl": "24px" }, // Responsive font size
-                          marginBottom: "8px"
+                          bgcolor: "#F4F4F4",
+                          borderRadius: 3,
+                          boxShadow: 0,
+                          width: { xs: "250px", sm: "300px", md: "520px", lg: "600px", "xl": "698px" },
+                          height: { xs: "178px", sm: "240px", md: "228px", lg: "240px", "xl": "230px" },
+                          p: { xs: "4px", sm: "12px", md: "12px", lg: "18px", "lx":"20px" }
                         }}
                       >
-                        {service.title}
-                      </Typography>
-
-                      {/* Service Description */}
-                      <Typography
-                        variant="body2"
-                        color="textSecondary"
-                        sx={{
-                          fontSize: { xs: "10px", sm: "14px", md: "16px", lg: "18px", "xl": "20px" }, // Smaller font on mobile
-                        }}
-                      >
-                        {service.description}
-                      </Typography>
-                    </CardContent>
-                  </Card>
-                </Box>
-              );
-            })}
-          </Box>
+                        <CardContent>
+                          <Avatar
+                            src={service.img}
+                            alt={service.title}
+                            sx={{
+                              width: { xs: 40, sm: 48, md: 50, lg: 54, xl: 64 }, // Responsive width
+                              height: { xs: 40, sm: 48, md: 50, lg: 54, xl: 64 }, // Responsive height
+                              mb: { xs: 1, sm: 2, md: 3 }, // Adjust spacing
+                            }}
+                          />
 
 
+                          {/* Service Title */}
+                          <Typography
+                            variant="h6"
+                            fontWeight="500"
+                            sx={{
+                              fontSize: { xs: "14px", sm: "18px", md: "21px", lg: "22px", "xl": "24px" }, // Responsive font size
+                              marginBottom: "8px"
+                            }}
+                          >
+                            {service.title}
+                          </Typography>
 
-        </div>
-      </section>
+                          {/* Service Description */}
+                          <Typography
+                            variant="body2"
+                            color="textSecondary"
+                            sx={{
+                              fontSize: { xs: "10px", sm: "14px", md: "16px", lg: "18px", "xl": "20px" }, // Smaller font on mobile
+                            }}
+                          >
+                            {service.description}
+                          </Typography>
+                        </CardContent>
+                      </Card>
+                    </Box>
+                  );
+                })}
+              </Box>
+            </div>
+          </section>
 
           <section>
           <div className="case-studies">
