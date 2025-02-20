@@ -29,6 +29,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css/effect-coverflow";
 import "./Industries.css";
+import { useState, useRef, useEffect } from "react";
 
 function Industries() {
   const services = [
@@ -57,6 +58,28 @@ function Industries() {
       img: scalabilityImg,
     },
   ];
+
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const section = document.getElementById("animated-section");
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          requestAnimationFrame(() => {
+            setIsVisible(true);
+          });
+          observer.disconnect(); // Stop observing after first trigger
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (section) observer.observe(section);
+
+    return () => observer.disconnect();
+  }, []);
 
   const testimonials = [
     {
@@ -225,8 +248,10 @@ function Industries() {
         </Box>
       </section>
 
-      <section>
+      <section id="animated-section">
         <Box
+        className={`animated-box ${isVisible ? "fade-in" : ""}`}
+              data-wow-duration="1.5s"
           sx={{
             display: "flex",
             alignItems: "center",
@@ -615,7 +640,7 @@ function Industries() {
             sx={{
               fontSize: { xs: "1.5rem", sm: "2rem" },
               textAlign: "center",
-              marginBottom: 3,
+              marginBottom: 4,
             }}
           >
             Contact us
@@ -673,7 +698,7 @@ function Industries() {
                   <img
                     src={item.img}
                     alt={item.title.toLowerCase()}
-                    style={{ width: 40, height: 40, marginTop: 5 }}
+                    style={{ width: 40, height: 40, marginTop: "15px" }}
                   />
                   <Stack>
                     <Typography
@@ -709,6 +734,7 @@ function Industries() {
                 width: { xs: "100%", md: "40%" },
                 backgroundColor: "#fff",
                 borderRadius: "10px",
+                marginTop: "-40px"
               }}
             >
               <Formik
