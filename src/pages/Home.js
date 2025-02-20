@@ -360,6 +360,17 @@ const Home = () => {
               >
                 {stat.label}
               </Typography>
+              {stat.subLabel && (
+                <Typography
+                  variant="caption"
+                  color="text.secondary"
+                  sx={{
+                    fontSize: { xs: "14px", sm: "15px", md: "16px", lg: "17px", "xl": "20px" },
+                  }}
+                >
+                  {stat.subLabel}
+                </Typography>
+              )}
             </Paper>
           ))}
         </Box>
