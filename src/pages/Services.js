@@ -75,7 +75,7 @@ function Services() {
   const cardData = [
     {
       id: 1,
-      image: heroImg, // Replace with actual image URL
+      image: heroImg,
       title: "Project Name",
       description:
         "Lorem Ipsum Dolor Sit Amet Consectetur. Penatibus Viverra Arcu Aget...Lorem Ipsum Dolor Sit Amet Consectetur. Penatibus Viverra Arcu Aget",
@@ -91,7 +91,7 @@ function Services() {
     },
     {
       id: 1,
-      image: heroImg, // Replace with actual image URL
+      image: heroImg,
       title: "Project Name",
       description:
         "Lorem Ipsum Dolor Sit Amet Consectetur. Penatibus Viverra Arcu Aget...",
@@ -403,9 +403,6 @@ function Services() {
             className="navigation-buttons"
             sx={{
               display: "flex",
-              "@media (min-width: 1024)": {
-                maxWidth: "900px",
-              },
               justifyContent: "center",
               alignItems: "center",
               position: "relative",
@@ -413,11 +410,11 @@ function Services() {
               maxWidth: {
                 xs: "100%",
                 sm: "600px",
-                md: "850px",
-                lg: "1200px",
+                md: "1000px",
+                lg: "1050px",
                 xl: "1250px",
               },
-              margin: "auto",
+              marginTop: "auto",
             }}
           >
             {/* Navigation Buttons */}
@@ -503,6 +500,28 @@ function Services() {
               <ArrowForwardIosIcon fontSize="small" />
             </Button>
 
+            <Box
+              sx={{
+                position: "absolute",
+                top: 0,
+                right: 10, // Align to the right
+                width: { xs: "100%", md: "49%" }, // 50% of the card width on medium+ screens
+                zIndex: 10,
+              }}
+            >
+              <LinearProgress
+                variant="determinate"
+                value={((activeIndex + 1) / cardData.length) * 100}
+                sx={{
+                  bgcolor: "lightgray",
+                  "& .MuiLinearProgress-bar": {
+                    bgcolor: "red",
+                    transition: "none",
+                  },
+                }}
+              />
+            </Box>
+
             {/* Swiper Container */}
             <Swiper
               modules={[Navigation]}
@@ -543,25 +562,6 @@ function Services() {
                       position: "relative",
                     }}
                   >
-                    {/* Progress Bar (Full Width on Small Screens) */}
-                    <Box
-                      sx={{
-                        position: "absolute",
-                        top: 0,
-                        right: 0,
-                        width: { xs: "100%", md: "50%" },
-                        zIndex: 10,
-                      }}
-                    >
-                      <LinearProgress
-                        variant="determinate"
-                        value={((activeIndex + 1) / cardData.length) * 100}
-                        sx={{
-                          bgcolor: "lightgray",
-                          "& .MuiLinearProgress-bar": { bgcolor: "red" },
-                        }}
-                      />
-                    </Box>
 
                     {/* Image Section */}
                     <CardMedia
@@ -641,9 +641,9 @@ function Services() {
                           mt: 2,
                           alignSelf: { xs: "center", md: "flex-start" },
                           bgcolor: "#C8102E",
-                          width: { xs: "165px", md: "220px" },
+                          width: { xs: "165px", md: "185px" },
                           position: "relative",
-                          height: { xs: "20px", md: "45px" },
+                          height: { xs: "20px", md: "40px" },
 
                           "@media (max-width: 768px)": {
                             height: "30px",
@@ -658,7 +658,7 @@ function Services() {
                             height: "30px",
                           },
                           top: { xs: "0px", md: "-50px" },
-                          fontSize: { xs: "10px", md: "15px" },
+                          fontSize: { xs: "10px", md: "12px" },
                           left: { xs: "0px", md: "15px" }, // Fixes overlap on small screens
                         }}
                       >
@@ -680,7 +680,7 @@ function Services() {
 
       <section className="testimonials">
         <div className="what-our-clients-say">
-          <h2>What Our Clients Say</h2>
+          <Typography variant='h4' sx={{marginBottom: "5px", textAlign: "center", fontSize: "28px"}}>What Our Client's Say</Typography>
 
           <div className="boarder">
             <Box
@@ -998,7 +998,7 @@ function Services() {
               >
                 {({ errors, touched }) => (
                   <Form>
-                    <Stack spacing={2}>
+                    <Stack spacing={4}>
                       <Field
                         name="fullName"
                         as={TextField}
@@ -1020,6 +1020,10 @@ function Services() {
                           touched.companyName && Boolean(errors.companyName)
                         }
                         helperText={touched.companyName && errors.companyName}
+                        sx={{
+                          marginTop: 3, // Add extra top margin
+                        }}
+                    
                       />
                       <Stack
                         direction={{ xs: "column", sm: "row" }}
@@ -1044,6 +1048,9 @@ function Services() {
                           fullWidth
                           error={touched.email && Boolean(errors.email)}
                           helperText={touched.email && errors.email}
+                          sx={{
+                            mt: "-20px"
+                          }}
                         />
                       </Stack>
                       <Stack
