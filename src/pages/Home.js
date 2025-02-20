@@ -573,8 +573,8 @@ const Home = () => {
               maxWidth: {
                 xs: "100%",
                 sm: "600px",
-                md: "850px",
-                lg: "1200px",
+                md: "1000px",
+                lg: "1050px",
                 xl: "1250px",
               },
               marginTop: "auto",
@@ -667,8 +667,8 @@ const Home = () => {
               sx={{
                 position: "absolute",
                 top: 0,
-                right: 0, // Align to the right
-                width: { xs: "100%", md: "50%" }, // 50% of the card width on medium+ screens
+                right: 10, // Align to the right
+                width: { xs: "100%", md: "49%" }, // 50% of the card width on medium+ screens
                 zIndex: 10,
               }}
             >
@@ -804,9 +804,9 @@ const Home = () => {
                           mt: 2,
                           alignSelf: { xs: "center", md: "flex-start" },
                           bgcolor: "#C8102E",
-                          width: { xs: "165px", md: "220px" },
+                          width: { xs: "165px", md: "185px" },
                           position: "relative",
-                          height: { xs: "20px", md: "45px" },
+                          height: { xs: "20px", md: "40px" },
 
                           "@media (max-width: 768px)": {
                             height: "30px",
@@ -821,7 +821,7 @@ const Home = () => {
                             height: "30px",
                           },
                           top: { xs: "0px", md: "-50px" },
-                          fontSize: { xs: "10px", md: "15px" },
+                          fontSize: { xs: "10px", md: "12px" },
                           left: { xs: "0px", md: "15px" }, // Fixes overlap on small screens
                         }}
                       >
