@@ -19,6 +19,7 @@ import { Pagination, Navigation, EffectCoverflow } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import { Autoplay } from "swiper/modules";
 import "swiper/css/effect-coverflow";
 import { motion } from "framer-motion";
 import arrowimg from "../images/right-up.png";
@@ -140,10 +141,10 @@ const Home = () => {
             flexDirection: { xs: "column", sm: "column", md: "row" },
             alignItems: "center",
             justifyContent: "space-between",
-            px: { xs: 3, sm: 6, md: 6, lg: 11, xl: "300" },
+            px: { xs: 3, sm: 6, md: 3, lg: 7, xl: 12 },
             py: { xs: 4, md: 5 },
             overflow: "hidden",
-            width: "100%", // Ensures it stretches across full width
+            width: "100%",
           }}
         >
           {/* Left Content (Text) */}
@@ -170,7 +171,7 @@ const Home = () => {
                   xl: "32px",
                 },
                 display: "inline-block",
-                p: 1, // Padding inside the heading border
+                p: 1,
               }}
             >
               {`“Transforming Ideas Into Digital Realities”`}
@@ -208,6 +209,7 @@ const Home = () => {
                 px: { xs: 2, sm: 3, md: 4 },
                 py: { xs: 1, sm: 1.25, md: 1.5 },
                 fontSize: { xs: "12px", sm: "14px", md: "16px" },
+                marginLeft: 1,
               }}
               variant="contained"
             >
@@ -218,11 +220,11 @@ const Home = () => {
           {/* Right Content (Image) */}
           <Box
             sx={{
-              flex: { xs: 1, sm: 0.8, md: 0.9 }, // Less space for image on tablets but keeps it balanced
+              flex: { xs: 1, sm: 0.8, md: 0.9 },
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              maxWidth: { xs: "100%", sm: "75%", md: "45%" }, // Increase size on tablets
+              maxWidth: { xs: "100%", sm: "75%", md: "45%" },
               p: 2,
             }}
           >
@@ -232,8 +234,8 @@ const Home = () => {
               src={heroImg}
               alt="Hero"
               style={{
-                width: "100%", // Ensures image fills its given space
-                maxWidth: "599px", // Prevents excessive stretching
+                width: "100%",
+                maxWidth: "599px",
                 height: "auto",
                 borderRadius: "8px",
               }}
@@ -247,7 +249,7 @@ const Home = () => {
         ref={ref}
         style={{
           textAlign: "center",
-          padding: "50px 20px",
+          padding: "70px 20px",
           backgroundColor: "#F5F5F5",
         }}
       >
@@ -266,8 +268,8 @@ const Home = () => {
           sx={{
             maxWidth: { xs: "600px", sm: "746px", md: "946px" },
             margin: "0 auto",
-            padding: "0 10px",
             fontSize: { xs: "16px", sm: "18px", md: "20px" },
+            textAlign: "center",
           }}
         >
           KDigitalCurry is a leading mobile and web app development company in
@@ -282,13 +284,14 @@ const Home = () => {
           variants={containerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          style={{
+          sx={{
             display: "flex",
             flexWrap: "wrap",
             justifyContent: "center",
             gap: "24px",
             marginTop: "20px",
-            padding: "20px",
+            px: { sm: "40px", md: "40px", lg: "79px", xl: "120px" },
+            py: { sm: "0px", md: "0px", lg: "16px", xl: "16px" },
           }}
         >
           {stats.map((stat, index) => (
@@ -305,10 +308,10 @@ const Home = () => {
                 flex: "1 1 180px",
                 maxWidth: {
                   xs: "100px",
-                  sm: "200px",
-                  md: "208px",
-                  lg: "273px",
-                  xl: "290px",
+                  sm: "290px",
+                  md: "268px",
+                  lg: "290px",
+                  xl: "318px",
                 },
                 minWidth: "150px",
                 height: {
@@ -365,7 +368,13 @@ const Home = () => {
                   variant="caption"
                   color="text.secondary"
                   sx={{
-                    fontSize: { xs: "14px", sm: "15px", md: "16px", lg: "17px", "xl": "20px" },
+                    fontSize: {
+                      xs: "14px",
+                      sm: "15px",
+                      md: "16px",
+                      lg: "17px",
+                      xl: "20px",
+                    },
                   }}
                 >
                   {stat.subLabel}
@@ -376,7 +385,7 @@ const Home = () => {
         </Box>
       </section>
 
-      <section className="our-services">
+      <section className="our-services" style={{ margin: "100px 0" }}>
         <div className="services">
           <Typography
             variant="h2"
@@ -384,6 +393,7 @@ const Home = () => {
               fontSize: { xs: "22px", sm: "26px", md: "32px" }, // Responsive font size
               fontWeight: "bold",
               textAlign: "center",
+              padding: 5,
             }}
           >
             Our Services
@@ -393,7 +403,7 @@ const Home = () => {
             sx={{
               display: "flex",
               flexWrap: "wrap",
-              rowGap: 3, // Keeps vertical spacing consistent
+              rowGap: 3,
               justifyContent: "center",
               p: { xs: 0.1, sm: 1, md: 1 },
             }}
@@ -403,13 +413,19 @@ const Home = () => {
                 <Box
                   key={index}
                   sx={{
-                    width: "calc(45% - 46px)", // Slightly increases horizontal spacing
+                    width: {
+                      xs: "100%",
+                      sm: "80%",
+                      md: "calc(47% - 5px)",
+                      lg: "calc(45% - 10px)",
+                      xl: "calc(45% - 42px)",
+                    },
                     minWidth: "300px",
                     display: "flex",
                     justifyContent: "center",
                     mx: "9px",
                     my: "-15px",
-                    mb: { xs: "8px", sm: "10px", md: "16px", lg: "10px" }, // Adds vertical spaci
+                    mb: { xs: "8px", sm: "10px", md: "16px", lg: "10px" },
                   }}
                 >
                   <Card
@@ -418,15 +434,15 @@ const Home = () => {
                       borderRadius: 3,
                       boxShadow: 0,
                       width: {
-                        xs: "250px",
-                        sm: "300px",
-                        md: "520px",
-                        lg: "600px",
+                        xs: "450px",
+                        sm: "700px",
+                        md: "630px",
+                        lg: "640px",
                         xl: "698px",
                       },
                       height: {
-                        xs: "178px",
-                        sm: "240px",
+                        xs: "158px",
+                        sm: "200px",
                         md: "228px",
                         lg: "240px",
                         xl: "230px",
@@ -502,7 +518,7 @@ const Home = () => {
           <h2>Area Of Expertise</h2>
           <Box
             sx={{
-              px: { xs: 7, sm: 9, md: 12, lg: 15 },
+              px: { xs: 7, sm: 9, md: 8, lg: 13, xl: 18 },
               py: 3,
               maxWidth: { xs: "100%", sm: "95%", md: "95%", lg: "90%" },
               mx: "auto",
@@ -512,22 +528,22 @@ const Home = () => {
             <Swiper
               spaceBetween={32}
               slidesPerView={3}
-              loop={false} // Ensures it does not loop back
+              loop={true}
+              autoplay={{
+                delay: 2000,
+                disableOnInteraction: false,
+              }}
               breakpoints={{
-                320: { slidesPerView: 1, pagination: { clickable: true } },
-                600: { slidesPerView: 1.5, pagination: { clickable: true } },
-                768: { slidesPerView: 2, pagination: { clickable: true } },
+                320: { slidesPerView: 1 },
+                600: { slidesPerView: 1.5 },
+                768: { slidesPerView: 2 },
                 1024: { slidesPerView: 2.5 },
                 1280: { slidesPerView: 3 },
-              }}
-              onReachEnd={(swiper) => {
-                swiper.params.centeredSlides = false;
-                swiper.update();
               }}
               pagination={
                 window.innerWidth <= 1024 ? { clickable: true } : false
               }
-              modules={[Pagination]}
+              modules={[Pagination, Autoplay]} // Add Autoplay module here
             >
               {areaOfExp.map((service, index) => (
                 <SwiperSlide key={index}>
@@ -583,6 +599,7 @@ const Home = () => {
             {/* Navigation Buttons */}
             <Button
               className="btn-prev"
+              size="medium"
               onClick={() => swiperRef.current?.slidePrev()}
               sx={{
                 position: "absolute",
@@ -590,7 +607,7 @@ const Home = () => {
                 alignItems: "center",
                 "@media (min-width: 320px)": {
                   marginTop: "15px",
-                  marginBottom: "-15px",
+                  marginBottom: "-20px",
                 },
                 "@media (min-width: 375px)": {
                   marginTop: "15px",
@@ -605,11 +622,16 @@ const Home = () => {
                 "@media (min-width: 768px)": {
                   marginTop: "20px",
                   marginBottom: "-10px",
-                  marginRight: "10px",
+                  marginRight: "205px",
+                },
+                "@media (min-width: 1024px)": {
+                  marginTop: "20px",
+                  marginBottom: "-10px",
+                  marginRight: "0px",
                 },
                 justifyContent: "center",
-                bottom: 40, // Always at the bottom
-                right: { xs: 155, sm: 110 }, // Moves inward on small screens
+                bottom: 40,
+                right: { xs: 155, sm: 110 },
                 zIndex: 10,
                 minWidth: 40,
                 height: { xs: 30, sm: 30, md: 40 },
@@ -627,17 +649,18 @@ const Home = () => {
 
             <Button
               className="btn-next"
+              size="medium"
               onClick={() => swiperRef.current?.slideNext()}
               sx={{
                 position: "absolute",
-                bottom: 40, // Always at the bottom
-                right: { xs: 90, sm: 50 }, // Moves inward on small screens
+                bottom: 40,
+                right: { xs: 90, sm: 50 },
                 zIndex: 10,
                 minWidth: 40,
                 height: { xs: 30, sm: 30, md: 40 },
                 "@media (min-width: 320px)": {
                   marginTop: "15px",
-                  marginBottom: "-15px",
+                  marginBottom: "-20px",
                 },
                 "@media (min-width: 375px)": {
                   marginTop: "15px",
@@ -652,7 +675,12 @@ const Home = () => {
                 "@media (min-width: 768px)": {
                   marginTop: "20px",
                   marginBottom: "-10px",
-                  marginRight: "10px",
+                  marginRight: "200px",
+                },
+                "@media (min-width: 1024px)": {
+                  marginTop: "20px",
+                  marginBottom: "-10px",
+                  marginRight: "0px",
                 },
                 bgcolor: "rgba(0,0,0,0.6)",
                 color: "white",
@@ -667,8 +695,22 @@ const Home = () => {
               sx={{
                 position: "absolute",
                 top: 0,
-                right: 10, // Align to the right
-                width: { xs: "100%", md: "49%" }, // 50% of the card width on medium+ screens
+                right: 10,
+                "@media (min-width: 320px)": {
+                  width: "93%",
+                },
+                "@media (min-width: 768px)": {
+                  width: "97%",
+                  right: 9,
+                },
+                "@media (min-width: 1024px)": {
+                  width: "49%",
+                },
+                "@media (min-width: 1500px)": {
+                  width: "49%",
+                  marginRight: "5px",
+                },
+                width: { xs: "97%", sm: "97%", md: "49%" },
                 zIndex: 10,
               }}
             >
@@ -681,6 +723,11 @@ const Home = () => {
                     bgcolor: "red",
                     transition: "none",
                   },
+                  "&::before": {
+                    display: "none",
+                  },
+                  border: "none",
+                  outline: "none",
                 }}
               />
             </Box>
@@ -702,20 +749,24 @@ const Home = () => {
                       display: "flex",
                       flexDirection: { xs: "column", md: "row" },
                       height: "350px",
-                      "@media (max-width: 1024px)": {
-                        height: "420px",
+                      "@media (min-width: 320px)": {
+                        height: "550px",
                       },
-                      "@media (max-width: 768px)": {
+                      "@media (min-width: 375px)": {
+                        height: "600px",
+                      },
+                      "@media (min-width: 425px)": {
+                        height: "620px",
+                      },
+                      "@media (min-width: 768px)": {
                         height: "580px",
                       },
-                      "@media (max-width: 425px)": {
-                        height: "540px",
+                      "@media (min-width: 1024px)": {
+                        height: "300px",
                       },
-                      "@media (max-width: 375px)": {
-                        height: "520px",
-                      },
-                      "@media (max-width: 320px)": {
-                        height: "500px",
+                      "@media (min-width: 1500px)": {
+                        height: "320px",
+                        width: "1210px",
                       },
                       p: 2,
                       maxWidth: "100%",
@@ -725,7 +776,6 @@ const Home = () => {
                       position: "relative",
                     }}
                   >
-
                     {/* Image Section */}
                     <CardMedia
                       component="img"
@@ -733,7 +783,10 @@ const Home = () => {
                       alt={card.title}
                       sx={{
                         width: { xs: "100%", md: "50%" },
-                        height: { xs: "auto", md: "100%" },
+                        height: { xs: "auto", md: "auto" },
+                        "@media (min-width: 768px)": {
+                          height: "300px",
+                        },
                         borderRadius: 2,
                         backgroundColor: "#e5e5e5",
                       }}
