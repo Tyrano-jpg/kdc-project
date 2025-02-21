@@ -10,7 +10,7 @@ import MockUpImg from "../images/Mockup.png";
 import OverValuesImg from "../images/Our Values.png";
 
 const portfolioItems = [
-  { id: 1, src: AboutUsImg, tags: ["Mobile App"] },
+  { id: 1, src: AboutUsImg, tags: ["Mobile App"], fileLink: "https://kdigitalcurry.com/" },
   { id: 2, src: CaseStudyImg, tags: ["Website"] },
   { id: 3, src: ContactUsImg, tags: ["Ecommerce"] },
   { id: 4, src: HomeBannerImg, tags: ["Logistics"] },
@@ -32,15 +32,18 @@ const PortfolioSection = () => {
 
   return (
     <section>
-    <Box sx={{ px: { xs: 2, md: 6 }, py: 4, mx: "55px", overflow: "hidden" }}>
+    <Box 
+    sx={{ px: { xs: 2, md: 10, lg: 1 , xl: 5}, py: 4, mx: "55px", overflow: "hidden" }}>
       {/* Typography Section */}
       <Box
+      sx={{
+        paddingLeft: {lg: 6 ,xl: 6},
+        maxWidth: {md: "1000px", lg: "1000px", xl: "1300px"}
+      }}
       className="wow animate__animated animate__fadeInDown"
         data-wow-duration="1.5s"
       >
-      <Box
-        // className="wow animate__animated animate__fadeInRight"
-        // data-wow-duration="1.5s"
+      <Box  
         sx={{ textAlign: "left", maxWidth: "800px" }}
       >
         <Typography variant="h5" sx={{ fontWeight: "bold", mt: 2, mb: 2 }}>
@@ -96,22 +99,25 @@ const PortfolioSection = () => {
           gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr" },
           gap: "40px", // Adjusted gap for proper centering
           justifyContent: "center",
-          maxWidth: "calc(100% - 110px)", // Ensuring 55px margin on left & right
+          maxWidth: {md: "80%", lg: "1000px", xl: "1450px"}, // Ensuring 55px margin on left & right
           mx: "auto",
           py: 3,
+          px: {md: 10 ,lg: 10 ,xl: -10 }
         }}
       >
         {filteredItems.map((item) => (
           <Card
             key={item.id}
             sx={{
-              width: { xs: "100%", sm: "500px" }, // Increased width by 50px
-              height: "300px", // Increased height by 50px
+              width: { xs: "100%", sm: "500px",md: "auto", lg: "500px", xl: "700px" }, // Increased width by 50px
+              height: {md: "300px",lg: "330px", xl: "400px"}, // Increased height by 50px
               borderRadius: 2,
               overflow: "hidden",
               border: "1px solid black",
               boxShadow: "none",
+              cursor: "pointer",
             }}
+            onClick={() => window.open(item.fileLink, "_blank")}
           >
             <CardMedia
               component="img"
