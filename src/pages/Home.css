@@ -117,3 +117,12 @@
 .case-studies h2{
     margin-bottom: 40px;
 }
+@media (min-width: 768px) {
+    .studies-p{
+        font-size: 15px;
+    }
+    .case-studies h2{
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+}
