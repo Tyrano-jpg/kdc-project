@@ -58,7 +58,6 @@ const PortfolioSection = () => {
             width: "1300px",
           },
           overflow: "hidden",
-          border: "1px solid red",
         }}
       >
         {/* Typography Section */}
@@ -66,7 +65,6 @@ const PortfolioSection = () => {
           sx={{
             paddingLeft: { lg: 6, xl: 6 },
             maxWidth: { md: "1000px", lg: "1000px", xl: "1300px" },
-            border: "1px solid blue",
             "@media(min-width: 1024px)": {
               margin: "10px 0px",
             },
@@ -132,9 +130,9 @@ const PortfolioSection = () => {
                     selectedFilter === filter ? "#C8102E" : "transparent",
                   border: "1.3px solid black",
                   px: 2,
-                  height: { xs: "30px", md: "40px", lg: "50px" },
-                  width: { xs: "100px", md: "120px", lg: "140px" },
-                  fontSize: { xs: "10px", md: "12px", lg: "15px" },
+                  height: { xs: "30px", md: "40px", lg: "40px" },
+                  width: { xs: "100px", md: "120px", lg: "130px" },
+                  fontSize: { xs: "10px", md: "12px", lg: "14px" },
                   "&:hover": {
                     backgroundColor: "#C8102E",
                     color: "#fff",
@@ -171,7 +169,6 @@ const PortfolioSection = () => {
         > */}
         <Box
           sx={{
-            border: "1px solid green",
             display: "grid",
             gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr" },
             gap: "40px",
