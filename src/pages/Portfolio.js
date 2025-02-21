@@ -99,7 +99,10 @@ const PortfolioSection = () => {
           gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr" },
           gap: "40px", // Adjusted gap for proper centering
           justifyContent: "center",
-          maxWidth: {md: "80%", lg: "1000px", xl: "1450px"}, // Ensuring 55px margin on left & right
+          maxWidth: {md: "80%", lg: "1000px", xl: "1450px"},
+          "@media(min-width: 1500px)": {
+            width: "100px"
+          },
           mx: "auto",
           py: 3,
           px: {md: 10 ,lg: 10 ,xl: -10 }
@@ -109,7 +112,10 @@ const PortfolioSection = () => {
           <Card
             key={item.id}
             sx={{
-              width: { xs: "100%", sm: "500px",md: "auto", lg: "500px", xl: "700px" }, // Increased width by 50px
+              width: { xs: "100%", sm: "500px",md: "auto", lg: "500px", xl: "700px" },
+              "@media(min-width: 1500px)": {
+            width: "620px"
+          },
               height: {md: "300px",lg: "330px", xl: "400px"}, // Increased height by 50px
               borderRadius: 2,
               overflow: "hidden",
