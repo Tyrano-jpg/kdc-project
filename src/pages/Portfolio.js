@@ -129,7 +129,7 @@ const PortfolioSection = () => {
                   xl: "700px",
                 },
                 "@media(min-width: 1500px)": {
-                  width: "620px",
+                  width: "595px",
                 },
                 "@media(min-width: 1728px)": {
                   width: "700px",
