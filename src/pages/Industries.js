@@ -122,7 +122,7 @@ function Industries() {
             flexDirection: { xs: "column", sm: "column", md: "row" },
             alignItems: "center",
             justifyContent: "space-between",
-            px: { xs: 3, sm: 6, md: 6, lg: 11, xl: "300" },
+            px: { xs: 3, sm: 6, md: 6, lg: 11, xl: 13.5 },
             py: { xs: 4, md: 5 },
             overflow: "hidden",
             width: "100%", // Ensures it stretches across full width
@@ -152,7 +152,6 @@ function Industries() {
                   xl: "32px",
                 },
                 display: "inline-block",
-                p: 1, // Padding inside the heading border
               }}
             >
               {`Ecommerce & Marketplace`}
@@ -177,7 +176,7 @@ function Industries() {
                   lg: "605px",
                   xl: "704px",
                 },
-                p: 1,
+                padding: "10px 0px"
               }}
             >
               "Building secure, scalable eCommerce platforms with smooth product
@@ -258,7 +257,7 @@ function Industries() {
             backgroundColor: "#e5e5e5",
             height: { xs: "auto",sm: "400px", md: "300px", lg: "320px" , xl: "450px"}, // Auto height on small screens, fixed 350px on medium and up
             width: {xs: "auto",  sm: "auto", md: "700px", lg: "1000px", xl: "1420px"},
-            padding: 3,
+            p: 3,
             borderRadius: 2,
             maxWidth: 1420,
             margin: "auto",
