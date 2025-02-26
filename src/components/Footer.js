@@ -11,7 +11,8 @@ const Footer = () => {
         sx={{
           backgroundColor: "#fff",
           py: 4,
-          px: { xs: 3, sm: 5, md: 10 },
+          px: { xs: "20px", sm: "40px", md: "100px" },
+          mb: 0,
           borderTop: "1px solid black",
           textAlign: { xs: "center", md: "left" },
         }}
@@ -21,33 +22,67 @@ const Footer = () => {
           justifyContent="space-between"
           alignItems={{ xs: "center", md: "flex-start" }}
           flexWrap="wrap"
-          gap={{ xs: 4, md: 3 }}
+          gap={{ xs: 4, md: 0 }}
         >
           {/* Left Column - Logo & Description */}
-          <Box sx={{ maxWidth: { xs: "100%", md: "350px" } }}>
-            <img src={kdclogo} alt="KDigitalCurry" width="170px" height="auto" />
-            <Typography variant="body2" color="text.secondary" mt={1} sx={{ lineHeight: 1.6 }}>
-              KDigitalCurry is a leading mobile and web app development company in Mumbai with over 10+ years of
-              experience. We create human-centric, scalable solutions, delivering full-stack services across various
-              domains.
+          <Box
+            sx={{
+              maxWidth: { xs: "100%", md: "350px" }, // Keep width at 350px for md screens
+              "@media (min-width: 768px)": { maxWidth: "550px" }, // Ensure max-width at 1240px
+              "@media (min-width: 1240px)": { maxWidth: "350px" },
+            }}
+          >
+            <img
+              src={kdclogo}
+              alt="KDigitalCurry"
+              width="170px"
+              height="auto"
+            />
+            <Typography variant="body2" color="text.secondary" mt={1}>
+              KDigitalCurry is a leading mobile and web app development company
+              in Mumbai with over 10+ years of experience. We create
+              human-centric, scalable solutions, delivering full-stack services
+              across various domains.
             </Typography>
 
-            {/* Social Icons */}
-            <Stack direction="row" spacing={2} mt={2} justifyContent={{ xs: "center", md: "flex-start" }}>
-              {[
-                { src: facebookimg, alt: "Facebook", link: "https://www.facebook.com" },
-                { src: instagramimg, alt: "Instagram", link: "https://www.instagram.com" },
-                { src: linkedinimg, alt: "LinkedIn", link: "https://www.linkedin.com" },
-              ].map((icon, index) => (
-                <Link key={index} href={icon.link} target="_blank">
-                  <img src={icon.src} alt={icon.alt} style={{ height: "35px", width: "35px" }} />
-                </Link>
-              ))}
+            {/* Social Icons with Links */}
+            <Stack
+              direction="row"
+              spacing={2}
+              mt={2}
+              justifyContent={{ xs: "center", md: "flex-start" }}
+            >
+              <Link href="https://www.facebook.com" target="_blank">
+                <img
+                  src={facebookimg}
+                  alt="Facebook"
+                  style={{ height: "35px", width: "35px" }}
+                />
+              </Link>
+              <Link href="https://www.instagram.com" target="_blank">
+                <img
+                  src={instagramimg}
+                  alt="Instagram"
+                  style={{ height: "35px", width: "35px" }}
+                />
+              </Link>
+              <Link href="https://www.linkedin.com" target="_blank">
+                <img
+                  src={linkedinimg}
+                  alt="LinkedIn"
+                  style={{ height: "35px", width: "35px" }}
+                />
+              </Link>
             </Stack>
           </Box>
 
           {/* Middle Column - Services */}
-          <Box sx={{ textAlign: { xs: "center", md: "left" } }}>
+          <Box
+            sx={{
+              ml: { md: "20px" },
+              textAlign: { xs: "center", md: "left" },
+            }}
+          >
             <Typography fontWeight="bold" sx={{ mb: 1 }}>
               Services
             </Typography>
@@ -70,6 +105,8 @@ const Footer = () => {
                     textDecoration: "none",
                     color: "black",
                     fontSize: "15px",
+                    fontWeight: "normal",
+                    mb: { md: "10px" },
                     "&:hover": { textDecoration: "underline" },
                   }}
                 >
@@ -80,7 +117,13 @@ const Footer = () => {
           </Box>
 
           {/* Right Column - Careers */}
-          <Box sx={{ textAlign: { xs: "center", md: "left" } }}>
+          <Box
+            sx={{
+              ml: { md: "60px" },
+              mr: { md: "160px" },
+              textAlign: { xs: "center", md: "left" },
+            }}
+          >
             <Typography fontWeight="bold" sx={{ mb: 1 }}>
               Explore Careers
             </Typography>
@@ -103,6 +146,8 @@ const Footer = () => {
                     textDecoration: "none",
                     color: "black",
                     fontSize: "15px",
+                    fontWeight: "normal",
+                    mb: { md: "10px" },
                     "&:hover": { textDecoration: "underline" },
                   }}
                 >
@@ -114,7 +159,12 @@ const Footer = () => {
         </Stack>
 
         {/* Bottom Copyright */}
-        <Typography variant="body2" textAlign="center" mt={7} color="text.secondary">
+        <Typography
+          variant="body2"
+          textAlign="center"
+          mt={7}
+          color="text.secondary"
+        >
           Copyright © 2024 K DIGITALCURRY. All Rights Reserved
         </Typography>
       </Box>
