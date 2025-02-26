@@ -122,10 +122,10 @@ function Industries() {
             flexDirection: { xs: "column", sm: "column", md: "row" },
             alignItems: "center",
             justifyContent: "space-between",
-            px: { xs: 3, sm: 6, md: 6, lg: 11, xl: 13.5 },
+            px: { xs: 3, sm: 6, md: 6, lg: 8, xl: 13.5 },
             py: { xs: 4, md: 5 },
             overflow: "hidden",
-            width: "100%", // Ensures it stretches across full width
+            width: "100%",
           }}
         >
           {/* Left Content (Text) */}
@@ -306,7 +306,7 @@ function Industries() {
           </Box>
         </Box>
       </section>
-
+               
       <section
         className="web-services"
         style={{
