@@ -23,13 +23,15 @@ const Footer = () => {
           alignItems={{ xs: "center", md: "flex-start" }}
           flexWrap="wrap"
           gap={{ xs: 4, md: 0 }}
+          sx={{ marginTop: "20px"}}
         >
           {/* Left Column - Logo & Description */}
           <Box
             sx={{
               maxWidth: { xs: "100%", md: "350px" }, // Keep width at 350px for md screens
-              "@media (min-width: 768px)": { maxWidth: "550px" }, // Ensure max-width at 1240px
-              "@media (min-width: 1240px)": { maxWidth: "350px" },
+              "@media (min-width: 768px)": { maxWidth: "550px" }, 
+              "@media (max-width: 1200px)": { maxWidth: "250px" },
+              "@media (min-width: 1240px)": { maxWidth: "320px" },
             }}
           >
             <img
@@ -107,7 +109,6 @@ const Footer = () => {
                     fontSize: "15px",
                     fontWeight: "normal",
                     mb: { md: "10px" },
-                    "&:hover": { textDecoration: "underline" },
                   }}
                 >
                   • {service}
@@ -148,7 +149,6 @@ const Footer = () => {
                     fontSize: "15px",
                     fontWeight: "normal",
                     mb: { md: "10px" },
-                    "&:hover": { textDecoration: "underline" },
                   }}
                 >
                   • {career}
