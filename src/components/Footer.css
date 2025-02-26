@@ -332,62 +332,60 @@ footer {
 }
 
 /* Responsive for 375px width */
-@media (max-width: 375px) {
+@media (min-width: 375px) {
     footer {
         flex-direction: column;
         align-items: center;
+        justify-content: center;
+        text-align: center; /* Ensures text elements are centered */
     }
 
-    .col-one{
-        min-width: 200px;
+    .col-one, .col-two, .col-three {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
     }
 
-    .col-two{
+    .col-two {
         width: 70px;
-        margin-left: 200px;
-        margin-right: -60px;
-        padding-right: -40px;
         min-width: 270px;
-    }
-    .col-one img {
-        width: 150px;
-        height: auto;
-    }
-
-    .col-one p {
-        font-size: 11px;
-        line-height: 1.4;
-        margin-right: 25px;
+        margin: 0 auto; /* Centers the column horizontally */
+        padding-right: 0;
     }
 
     .socio-icon {
+        display: flex;
         justify-content: center;
     }
-
-    .socio-icon img {
-        height: 16px;
-        width: 16px;
+    .col-two p, .col-three p{
+        font-size: 15px;
     }
-
-    .col-two p, .col-three p {
-        font-size: 13px;
-        align-items: center;
-    }
-
+    .col-two p, .col-three p, 
     .col-two ul li, .col-three ul li {
-        font-size: 11px;
+        display: flex;
+        justify-content: center;
         align-items: center;
+        text-align: center;
     }
-
-    .col-two, .col-three {
-        margin: 0;
+    .col-two ul, .col-three ul{
+        margin-right: 30px;
+        font-size: 12px;
     }
-
+    .col-two li::before, .col-three li::before {
+        content: "•";  /* Unicode bullet character */
+        color: black;   /* Adjust color if needed */
+        display: inline-block;
+        width: 1em;     /* Ensure proper spacing */
+        margin-right: 5px;
+    }
     .copyright {
-        font-size: 8px;
-        margin-top: 8px;
+        text-align: center;
     }
 }
+
+
 @media (max-width: 329px){
     .col-one{
         margin-right: 30px;
