@@ -1008,7 +1008,7 @@ const Home = () => {
         <div className="what-our-clients-say">
           <Typography
             variant="h4"
-            sx={{ marginBottom: "5px", textAlign: "center", fontSize: "28px" }}
+            sx={{ marginBottom: "-20px", textAlign: "center", fontSize: "28px" }}
           >
             What Our Client's Say
           </Typography>
