@@ -165,7 +165,7 @@ function Services() {
             flexDirection: { xs: "column", sm: "column", md: "row" },
             alignItems: "center",
             justifyContent: "space-between",
-            px: { xs: 3, sm: 6, md: 6, lg: 11, xl: "300" },
+            px: { xs: 3, sm: 6, md: 3, lg: 8, xl: 12.5 },
             py: { xs: 4, md: 5 },
             width: "100%",
             overflow: "hidden", // Ensures it stretches across full width
@@ -231,6 +231,7 @@ function Services() {
               sx={{
                 backgroundColor: "black",
                 textTransform: "none",
+                marginLeft: { sm: 0, md: 1 },
                 px: { xs: 2, sm: 3, md: 4 },
                 py: { xs: 1, sm: 1.25, md: 1.5 },
                 fontSize: { xs: "12px", sm: "14px", md: "16px" },
@@ -280,10 +281,11 @@ function Services() {
           <Typography
             variant="h2"
             sx={{
-              fontSize: { xs: "22px", sm: "26px", md: "32px" }, // Responsive font size
+              fontSize: { xs: "22px", sm: "26px", md: "32px" },
               fontWeight: "bold",
               textAlign: "center",
               mb: 3,
+              p: 2
             }}
           >
             Our Web & CMS Development Services
@@ -293,9 +295,11 @@ function Services() {
             sx={{
               display: "flex",
               flexWrap: "wrap",
-              rowGap: 3, // Keeps vertical spacing consistent
+              rowGap: 3,
               justifyContent: "center",
-              p: { xs: 0.1, sm: 1, md: 1 },
+              // 🔹 Padding applied to the outermost container
+              px: { xs: 0.1, sm: 1, md: 1, lg: 0.1, xl: 2.5 }, // Horizontal padding (left & right)
+              py: { xs: 0.1, sm: 1, md: 1 }, // Vertical padding (top & bottom)
             }}
           >
             {services.map((service, index) => {
@@ -303,13 +307,19 @@ function Services() {
                 <Box
                   key={index}
                   sx={{
-                    width: "calc(45% - 46px)", // Slightly increases horizontal spacing
-                    minWidth: "300px",
+                    width: {
+                      xs: "100%", // Full width on extra small screens
+                      sm: "calc(80% - 40px)", // Increased width for bigger cards on small screens
+                      md: "calc(45% - 5px)", // 2 cards per row on medium screens
+                      lg: "calc(45% - 30px)", // 2 cards per row on large screens
+                      xl: "calc(45% - 46px)", // 2 cards per row on extra-large screens
+                    },
+                    minWidth: "320px", // Slightly increased to prevent shrinking too much
                     display: "flex",
                     justifyContent: "center",
-                    mx: "9px", // Adds more space between cards
-                    my: "-15px",
-                    mb: { xs: "8px", sm: "10px", md: "16px", lg: "10px" }, // Adds vertical spaci
+                    mx: "9px", // 🔹 Horizontal margin (left & right)
+                    my: "-15px", // 🔹 Vertical margin (top & bottom)
+                    mb: { xs: "8px", sm: "10px", md: "16px", lg: "10px" }, // 🔹 Bottom margin for spacing
                   }}
                 >
                   <Card
@@ -318,25 +328,25 @@ function Services() {
                       borderRadius: 3,
                       boxShadow: 0,
                       width: {
-                        xs: "250px",
-                        sm: "300px",
+                        xs: "280px", // Slightly bigger on xs
+                        sm: "500px", // Increased size for small screens
                         md: "520px",
                         lg: "600px",
                         xl: "698px",
                       },
                       height: {
-                        xs: "178px",
-                        sm: "240px",
-                        md: "228px",
+                        xs: "190px", // Slightly bigger on xs
+                        sm: "240px", // Bigger on sm
+                        md: "248px",
                         lg: "240px",
-                        xl: "230px",
+                        xl: "270px",
                       },
                       p: {
-                        xs: "4px",
-                        sm: "12px",
+                        xs: "6px", // Extra small screens
+                        sm: "16px", // Bigger padding for small screens
                         md: "12px",
                         lg: "18px",
-                        lx: "20px",
+                        xl: "20px",
                       },
                     }}
                   >
@@ -345,9 +355,9 @@ function Services() {
                         src={service.img}
                         alt={service.title}
                         sx={{
-                          width: { xs: 40, sm: 48, md: 50, lg: 54, xl: 64 }, // Responsive width
-                          height: { xs: 40, sm: 48, md: 50, lg: 54, xl: 64 }, // Responsive height
-                          mb: { xs: 1, sm: 2, md: 3 }, // Adjust spacing
+                          width: { xs: 50, sm: 60, md: 65, lg: 70, xl: 80 }, // Increased avatar size on sm
+                          height: { xs: 50, sm: 60, md: 65, lg: 70, xl: 80 },
+                          mb: { xs: 1, sm: 2, md: 3 },
                         }}
                       />
 
@@ -357,13 +367,13 @@ function Services() {
                         fontWeight="500"
                         sx={{
                           fontSize: {
-                            xs: "14px",
-                            sm: "18px",
+                            xs: "16px",
+                            sm: "22px", // Bigger title text for sm
                             md: "21px",
                             lg: "22px",
                             xl: "24px",
-                          }, // Responsive font size
-                          marginBottom: "8px",
+                          },
+                          marginBottom: "10px", // More spacing below title
                         }}
                       >
                         {service.title}
@@ -375,12 +385,12 @@ function Services() {
                         color="textSecondary"
                         sx={{
                           fontSize: {
-                            xs: "10px",
-                            sm: "14px",
+                            xs: "12px",
+                            sm: "16px", // Bigger text for sm
                             md: "16px",
                             lg: "18px",
                             xl: "20px",
-                          }, // Smaller font on mobile
+                          },
                         }}
                       >
                         {service.description}
@@ -388,17 +398,19 @@ function Services() {
                     </CardContent>
                   </Card>
                 </Box>
+
               );
             })}
           </Box>
+
         </div>
       </section>
 
       {/* case studies */}
       <section>
         <div className="case-studies">
-          <p className="studies-p">Case Studies</p>
-          <h2 className="studies-h2">Explore Success Stories</h2>
+          <Typography variant="h6" sx={{fontSize: "19px"}}>Case Studies</Typography>
+          <Typography variant="h5" sx={{marginBottom: "30px"}}>Explore Success Stories</Typography>
           <Box
             className="navigation-buttons"
             sx={{
@@ -420,6 +432,7 @@ function Services() {
             {/* Navigation Buttons */}
             <Button
               className="btn-prev"
+              size="medium"
               onClick={() => swiperRef.current?.slidePrev()}
               sx={{
                 position: "absolute",
@@ -427,7 +440,7 @@ function Services() {
                 alignItems: "center",
                 "@media (min-width: 320px)": {
                   marginTop: "15px",
-                  marginBottom: "-15px",
+                  marginBottom: "-20px",
                 },
                 "@media (min-width: 375px)": {
                   marginTop: "15px",
@@ -436,17 +449,47 @@ function Services() {
                 },
                 "@media (min-width: 425px)": {
                   marginTop: "15px",
-                  marginBottom: "5px",
+                  marginBottom: "-5px",
                   marginRight: "50px",
+                },
+                "@media (min-width: 505px)": {
+                  marginTop: "15px",
+                  marginBottom: "-15px",
+                  marginRight: "90px",
+                },
+                "@media (min-width: 580px)": {
+                  marginTop: "20px",
+                  marginBottom: "-10px",
+                  marginRight: "115px",
+                },
+                "@media (min-width: 697px)": {
+                  marginTop: "10px",
+                  marginBottom: "10px",
+                  marginRight: "200px",
                 },
                 "@media (min-width: 768px)": {
                   marginTop: "20px",
+                  marginBottom: "5px",
+                  marginRight: "205px",
+                },
+                "@media (min-width: 900px)": {
+                  marginTop: "20px",
                   marginBottom: "-10px",
-                  marginRight: "10px",
+                  marginRight: "0px",
+                },
+                "@media (min-width: 1000px)": {
+                  marginTop: "20px",
+                  marginBottom: "-10px",
+                  marginRight: "20px",
+                },
+                "@media (min-width: 1024px)": {
+                  marginTop: "20px",
+                  marginBottom: "-10px",
+                  marginRight: "0px",
                 },
                 justifyContent: "center",
-                bottom: 40, // Always at the bottom
-                right: { xs: 155, sm: 110 }, // Moves inward on small screens
+                bottom: 40,
+                right: { xs: 155, sm: 110 },
                 zIndex: 10,
                 minWidth: 40,
                 height: { xs: 30, sm: 30, md: 40 },
@@ -464,17 +507,18 @@ function Services() {
 
             <Button
               className="btn-next"
+              size="medium"
               onClick={() => swiperRef.current?.slideNext()}
               sx={{
                 position: "absolute",
-                bottom: 40, // Always at the bottom
-                right: { xs: 90, sm: 50 }, // Moves inward on small screens
+                bottom: 40,
+                right: { xs: 90, sm: 50 },
                 zIndex: 10,
                 minWidth: 40,
                 height: { xs: 30, sm: 30, md: 40 },
                 "@media (min-width: 320px)": {
                   marginTop: "15px",
-                  marginBottom: "-15px",
+                  marginBottom: "-20px",
                 },
                 "@media (min-width: 375px)": {
                   marginTop: "15px",
@@ -483,13 +527,43 @@ function Services() {
                 },
                 "@media (min-width: 425px)": {
                   marginTop: "15px",
-                  marginBottom: "5px",
+                  marginBottom: "-5px",
                   marginRight: "50px",
+                },
+                "@media (min-width: 505px)": {
+                  marginTop: "15px",
+                  marginBottom: "-15px",
+                  marginRight: "85px",
+                },
+                "@media (min-width: 580px)": {
+                  marginTop: "20px",
+                  marginBottom: "-10px",
+                  marginRight: "115px",
+                },
+                "@media (min-width: 697px)": {
+                  marginTop: "10px",
+                  marginBottom: "10px",
+                  marginRight: "200px",
                 },
                 "@media (min-width: 768px)": {
                   marginTop: "20px",
+                  marginBottom: "5px",
+                  marginRight: "200px",
+                },
+                "@media (min-width: 900px)": {
+                  marginTop: "20px",
                   marginBottom: "-10px",
-                  marginRight: "10px",
+                  marginRight: "0px",
+                },
+                "@media (min-width: 1000px)": {
+                  marginTop: "20px",
+                  marginBottom: "-10px",
+                  marginRight: "20px",
+                },
+                "@media (min-width: 1024px)": {
+                  marginTop: "20px",
+                  marginBottom: "-10px",
+                  marginRight: "0px",
                 },
                 bgcolor: "rgba(0,0,0,0.6)",
                 color: "white",
@@ -504,8 +578,45 @@ function Services() {
               sx={{
                 position: "absolute",
                 top: 0,
-                right: 10, // Align to the right
-                width: { xs: "100%", md: "49%" }, // 50% of the card width on medium+ screens
+                right: 10,
+                "@media (min-width: 320px)": {
+                  width: "93%",
+                },
+                "@media (min-width: 505px)": {
+                  width: "96%",
+                  right: 9,
+                },
+                "@media (min-width: 580px)": {
+                  width: "96%",
+                  right: 9,
+                },
+                "@media (min-width: 697px)": {
+                  width: "97%",
+                  right: 9,
+                },
+                "@media (min-width: 768px)": {
+                  width: "97%",
+                  right: 9,
+                },
+                "@media (min-width: 1000px)": {
+                  width: "98%",
+                },
+                "@media (min-width: 900px)": {
+                  width: "98%",
+                },
+                "@media (min-width: 1024px)": {
+                  width: "48%",
+                  right: 22
+                },
+                "@media (min-width: 1240px)": {
+                  width: "48%",
+                  right: 15
+                },
+                "@media (min-width: 1500px)": {
+                  width: "49%",
+                  marginRight: "5px",
+                },
+                width: { xs: "97%", sm: "97%", md: "49%" },
                 zIndex: 10,
               }}
             >
@@ -518,11 +629,22 @@ function Services() {
                     bgcolor: "red",
                     transition: "none",
                   },
+                  "&::before": {
+                    display: "none",
+                  },
+                  border: "none",
+                  outline: "none",
+                  boxShadow: "none",
+                  transform: "translateZ(0)",
+                  willChange: "transform",
+                  "& .MuiLinearProgress-root": {
+                    border: "none !important",
+                    outline: "none !important",
+                  },
                 }}
               />
             </Box>
 
-            {/* Swiper Container */}
             <Swiper
               modules={[Navigation]}
               spaceBetween={30}
@@ -539,20 +661,38 @@ function Services() {
                       display: "flex",
                       flexDirection: { xs: "column", md: "row" },
                       height: "350px",
-                      "@media (max-width: 1024px)": {
-                        height: "420px",
+                      "@media (min-width: 320px)": {
+                        height: "550px",
                       },
-                      "@media (max-width: 768px)": {
-                        height: "580px",
+                      "@media (min-width: 375px)": {
+                        height: "600px",
                       },
-                      "@media (max-width: 425px)": {
-                        height: "540px",
+                      "@media (min-width: 425px)": {
+                        height: "620px",
                       },
-                      "@media (max-width: 375px)": {
-                        height: "520px",
+                      "@media (min-width: 697px)": {
+                        height: "600px",
                       },
-                      "@media (max-width: 320px)": {
-                        height: "500px",
+                      "@media (min-width: 768px)": {
+                        height: "560px",
+                      },
+                      "@media (min-width: 900px)": {
+                        height: "300px",
+                      },
+                      "@media (min-width: 1000px)": {
+                        height: "300px",
+                      },
+                      "@media (min-width: 1024px)": {
+                        height: "300px",
+                        width: "95%",
+                      },
+                      "@media (min-width: 1240px)": {
+                        height: "310px",
+                        width: "97%",
+                      },
+                      "@media (min-width: 1500px)": {
+                        height: "320px",
+                        width: "1210px",
                       },
                       p: 2,
                       maxWidth: "100%",
@@ -562,7 +702,6 @@ function Services() {
                       position: "relative",
                     }}
                   >
-
                     {/* Image Section */}
                     <CardMedia
                       component="img"
@@ -570,7 +709,19 @@ function Services() {
                       alt={card.title}
                       sx={{
                         width: { xs: "100%", md: "50%" },
-                        height: { xs: "auto", md: "100%" },
+                        height: { xs: "auto", md: "auto" },
+                        "@media (min-width: 768px)": {
+                          height: "300px",
+                        },
+                        "@media (min-width: 697px)": {
+                          height: "300px",
+                        },
+                        "@media (min-width: 580px)": {
+                          height: "300px",
+                        },
+                        "@media (min-width: 1240px)": {
+                          height: "310px",
+                        },
                         borderRadius: 2,
                         backgroundColor: "#e5e5e5",
                       }}
@@ -584,16 +735,16 @@ function Services() {
                         flexDirection: "column",
                         justifyContent: "center",
                         textAlign: { xs: "center", md: "left" },
-                        paddingBottom: { xs: 3, md: 0 }, // Adds space at the bottom on smaller screens
+                        paddingBottom: { xs: 3, md: 0 },
                       }}
                     >
                       <Typography
                         variant="h5"
                         fontWeight="bold"
                         sx={{
-                          fontSize: { xs: "1.2rem", md: "1.5rem" },
+                          fontSize: { xs: "1.2rem", md: "1.3rem" },
                           position: "relative",
-                          top: { xs: "0px", md: "-50px" },
+                          top: { xs: "-30px",sm: "-40px", md: "-50px" },
                           left: { xs: "0px", md: "20px" },
                         }}
                       >
@@ -604,10 +755,10 @@ function Services() {
                         color="text.secondary"
                         sx={{
                           mt: 1,
-                          fontSize: { xs: "0.9rem", md: "1rem" },
+                          fontSize: { xs: "0.9rem", md: "0.9rem" },
                           position: "relative",
                           left: { xs: "0px", md: "20px" },
-                          top: { xs: "0px", md: "-50px" }, // Adjusted for responsiveness
+                          top: { xs: "-20px",sm: "-40px", md: "-50px" }, // Adjusted for responsiveness
                         }}
                       >
                         {card.description}
@@ -627,7 +778,7 @@ function Services() {
                             color="grey"
                             sx={{
                               position: "relative",
-                              top: { xs: "0px", md: "-50px" },
+                              top: { xs: "-10px",sm: "-40px", md: "-50px" },
                               left: { xs: "0px", md: "20px" },
                             }}
                           >
@@ -657,7 +808,7 @@ function Services() {
                           "@media (max-width: 320px)": {
                             height: "30px",
                           },
-                          top: { xs: "0px", md: "-50px" },
+                          top: { xs: "0px",sm: "-30px", md: "-50px" },
                           fontSize: { xs: "10px", md: "12px" },
                           left: { xs: "0px", md: "15px" }, // Fixes overlap on small screens
                         }}
@@ -680,7 +831,7 @@ function Services() {
 
       <section className="testimonials">
         <div className="what-our-clients-say">
-          <Typography variant='h4' sx={{marginBottom: "5px", textAlign: "center", fontSize: "28px"}}>What Our Client's Say</Typography>
+          <Typography variant='h4' sx={{ marginBottom: "5px", textAlign: "center", fontSize: "28px" }}>What Our Client's Say</Typography>
 
           <div className="boarder">
             <Box
@@ -707,6 +858,7 @@ function Services() {
                 centeredSlides={true}
                 slidesPerView={"auto"}
                 spaceBetween={window.innerWidth < 768 ? 5 : 10}
+                initialSlide={Math.floor(testimonials.length/2)}
                 coverflowEffect={{
                   rotate: 0,
                   stretch: 5,
@@ -1023,7 +1175,7 @@ function Services() {
                         sx={{
                           marginTop: 3, // Add extra top margin
                         }}
-                    
+
                       />
                       <Stack
                         direction={{ xs: "column", sm: "row" }}
