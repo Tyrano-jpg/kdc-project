@@ -385,9 +385,9 @@ function Industries() {
                         src={service.img}
                         alt={service.title}
                         sx={{
-                          width: { xs: 40, sm: 48, md: 50, lg: 54, xl: 64 }, // Responsive width
-                          height: { xs: 40, sm: 48, md: 50, lg: 54, xl: 64 }, // Responsive height
-                          mb: { xs: 1, sm: 2, md: 3 }, // Adjust spacing
+                          width: { xs: 40, sm: 48, md: 50, lg: 54, xl: 64 },
+                          height: { xs: 40, sm: 48, md: 50, lg: 54, xl: 64 },
+                          mb: { xs: 1, sm: 2, md: 2 },
                         }}
                       />
 
