@@ -23,13 +23,13 @@ const Footer = () => {
           alignItems={{ xs: "center", md: "flex-start" }}
           flexWrap="wrap"
           gap={{ xs: 4, md: 0 }}
-          sx={{ marginTop: "20px"}}
+          sx={{ marginTop: "20px" }}
         >
           {/* Left Column - Logo & Description */}
           <Box
             sx={{
               maxWidth: { xs: "100%", md: "350px" }, // Keep width at 350px for md screens
-              "@media (min-width: 768px)": { maxWidth: "550px" }, 
+              "@media (min-width: 768px)": { maxWidth: "550px" },
               "@media (max-width: 1200px)": { maxWidth: "250px" },
               "@media (min-width: 1240px)": { maxWidth: "320px" },
             }}
@@ -37,9 +37,9 @@ const Footer = () => {
             <img
               src={kdclogo}
               alt="KDigitalCurry"
-              width="170px"
-              height="auto"
+              style={{ width: "170px", height: "50px", objectFit: "contain" }}
             />
+
             <Typography variant="body2" color="text.secondary" mt={1}>
               KDigitalCurry is a leading mobile and web app development company
               in Mumbai with over 10+ years of experience. We create
