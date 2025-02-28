@@ -8,6 +8,7 @@ import IndustriesImg from "../images/Industries.png";
 import MissionImg from "../images/Mission.png";
 import MockUpImg from "../images/Mockup.png";
 import OverValuesImg from "../images/Our Values.png";
+import { motion } from "framer-motion";
 
 const portfolioItems = [
   {
@@ -35,6 +36,19 @@ const PortfolioSection = () => {
       ? portfolioItems
       : portfolioItems.filter((item) => item.tags.includes(selectedFilter));
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2 },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
   return (
     <section>
       <Box
@@ -54,6 +68,9 @@ const PortfolioSection = () => {
             padding: "10px 0",
             margin: "10px auto",
           },
+          "@media(min-width: 1440px)": {
+            width: "1250px",
+          },
           "@media(min-width: 1500px)": {
             width: "1300px",
           },
@@ -70,6 +87,10 @@ const PortfolioSection = () => {
             },
             "@media(min-width: 1240px)": {
               margin: "10px -25px",
+            },
+            "@media(min-width: 1440px)": {
+              margin: "0px",
+              padding: "5px",
             },
             "@media(min-width: 1500px)": {
               paddingLeft: "30px",
@@ -95,10 +116,17 @@ const PortfolioSection = () => {
             </Typography>
             <Typography
               variant="body1"
-              sx={{ mb: 4, fontSize: { xs: "13px", md: "15px", fontSize: { xs: "17px", md: "22px" },
-              "@media(min-width: 1500px)": {
-                fontSize: "18px",
-              }, } }}
+              sx={{
+                mb: 4,
+                fontSize: {
+                  xs: "13px",
+                  md: "15px",
+                  fontSize: { xs: "17px", md: "22px" },
+                  "@media(min-width: 1500px)": {
+                    fontSize: "18px",
+                  },
+                },
+              }}
             >
               Discover our diverse portfolio showcasing innovative solutions and
               applications that drive success. Each project reflects our
@@ -146,128 +174,123 @@ const PortfolioSection = () => {
         </Box>
 
         {/* Image Grid - 2 Per Row */}
-        {/* <Box
-          sx={{
-            display: "grid",
-            gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr" },
-            gap: "40px", // Adjusted gap for proper centering
-            justifyContent: "center",
-            maxWidth: { md: "80%", lg: "1000px", xl: "1450px" },
-            "@media(min-width: 1728px)": {
-              width: "1528px",
-              padding: "20px 10px",
-              marginRight: "-20px",
-              marginLeft: "85px",
-            },
-            "@media(min-width: 1680px)": {
-                  width: "1300px",
-                },
-            mx: "auto",
-            py: 3,
-            px: { md: 10, lg: 10, xl: -10 },
-          }}
-        > */}
-        <Box
-          sx={{
-            display: "grid",
-            gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr" },
-            gap: "40px",
-            "@media(min-width: 768px)": {
-              gap: "20px",
-            },
-            "@media(min-width: 320px)": {
-              gap: "15px",
-            },
-            "@media(min-width: 425px)": {
-              padding: "10px 0px",
-            },
-            "@media(min-width: 1024px)": {
-              width: "1300px",
-            },
-            "@media(min-width: 1500px)": {
-              margin: "10px auto",
-            },
-            justifyContent: "center",
-            maxWidth: { md: "90%", lg: "85%", xl: "80%" },
-            margin: "0 auto",
-            py: 3,
-            px: { xs: 2, md: 4, lg: 5, xl: 8 },
-            "@media(min-width: 1728px)": {
-              maxWidth: "1648px",
-              margin: "0 20px",
-            },
-            "@media(min-width: 1680px)": {
-              maxWidth: "1320px", // Increased width for large screens
-            },
-          }}
-        >
-          {filteredItems.map((item) => (
-            <Card
-              key={item.id}
-              sx={{
-                width: {
-                  xs: "100%",
-                  sm: "500px",
-                  md: "auto",
-                  lg: "500px",
-                  xl: "700px",
-                },
-                "@media(min-width: 320px)": {
-                  width: "240px",
-                  height: "170px",
-                },
-                "@media(min-width: 375px)": {
-                  width: "270px",
-                  height: "170px",
-                },
-                "@media(min-width: 425px)": {
-                  width: "345px",
-                  height: "190px",
-                },
-                "@media(min-width: 768px)": {
-                  width: "304px",
-                  height: "190px",
-                },
-                "@media(min-width: 1024px)": {
-                  width: "430px",
-                  height: "250px",
-                },
-                "@media(min-width: 1240px)": {
-                  width: "515px",
-                  height: "290px",
-                },
-                "@media(min-width: 1500px)": {
-                  width: "640px",
-                  height: "350px",
-                },
-                "@media(min-width: 1728px)": {
-                  width: "714px",
-                  height: "438",
-                  margin: "0",
-                  paddingRight: "-10px",
-                },
-                "@media(min-width: 1680px)": {
-                  width: "674px",
-                  height: "418",
-                },
-                height: { md: "300px", lg: "330px", xl: "400px" }, // Increased height by 50px
-                borderRadius: 2,
-                overflow: "hidden",
-                border: "1px solid black",
-                boxShadow: "none",
-                cursor: "pointer",
-              }}
-              onClick={() => window.open(item.fileLink, "_blank")}
-            >
-              <CardMedia
-                component="img"
-                image={item.src}
-                alt={`Portfolio ${item.id}`}
-                sx={{ width: "100%", height: "100%", objectFit: "cover" }}
-              />
-            </Card>
-          ))}
-        </Box>
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr" },
+              gap: "40px",
+              "@media(min-width: 768px)": {
+                gap: "20px",
+              },
+              "@media(min-width: 320px)": {
+                gap: "15px",
+              },
+              "@media(min-width: 425px)": {
+                padding: "10px 0px",
+              },
+              "@media(min-width: 1024px)": {
+                width: "1300px",
+              },
+              "@media(min-width: 1440px)": {
+                width: "1500px",
+                margin: "0px",
+                padding: "0px 90px",
+                alignContent: "center",
+                justifyContent: "center",
+              },
+              "@media(min-width: 1500px)": {
+                margin: "10px auto",
+              },
+              justifyContent: "center",
+              maxWidth: { md: "90%", lg: "85%", xl: "80%" },
+              margin: "0 auto",
+              py: 3,
+              px: { xs: 2, md: 4, lg: 5, xl: 8 },
+              "@media(min-width: 1728px)": {
+                maxWidth: "1648px",
+                margin: "0 20px",
+              },
+              "@media(min-width: 1680px)": {
+                maxWidth: "1320px", // Increased width for large screens
+              },
+            }}
+          >
+            {filteredItems.map((item) => (
+            
+                <Card
+                  key={item.id}
+                  sx={{
+                    width: {
+                      xs: "100%",
+                      sm: "500px",
+                      md: "auto",
+                      lg: "500px",
+                      xl: "700px",
+                    },
+                    "@media(min-width: 320px)": {
+                      width: "230px",
+                      height: "170px",
+                    },
+                    "@media(min-width: 375px)": {
+                      width: "290px",
+                      height: "170px",
+                    },
+                    "@media(min-width: 425px)": {
+                      width: "340px",
+                      height: "190px",
+                    },
+                    "@media(min-width: 768px)": {
+                      width: "304px",
+                      height: "190px",
+                    },
+                    "@media(min-width: 1024px)": {
+                      width: "430px",
+                      height: "250px",
+                    },
+                    "@media(min-width: 1240px)": {
+                      width: "515px",
+                      height: "290px",
+                    },
+                    "@media(min-width: 1440px)": {
+                      width: "610px",
+                      height: "340px",
+                    },
+                    "@media(min-width: 1496px)": {
+                      width: "674px",
+                      height: "418",
+                    },      
+                    "@media(min-width: 1500px)": {
+                      width: "610px",
+                      height: "350px",
+                    },
+                    "@media(min-width: 1728px)": {
+                      width: "714px",
+                      height: "438",
+                      margin: "0",
+                      paddingRight: "-10px",
+                    },
+                    "@media(min-width: 1680px)": {
+                      width: "674px",
+                      height: "418",
+                    },       
+                    height: { md: "300px", lg: "330px", xl: "400px" }, // Increased height by 50px
+                    borderRadius: 2,
+                    overflow: "hidden",
+                    border: "1px solid black",
+                    boxShadow: "none",
+                    cursor: "pointer",
+                  }}
+                  onClick={() => window.open(item.fileLink, "_blank")}
+                >
+                  <CardMedia
+                    component="img"
+                    image={item.src}
+                    alt={`Portfolio ${item.id}`}
+                    sx={{ width: "100%", height: "100%", objectFit: "cover" }}
+                  />
+                </Card>
+            ))}
+          </Box>
       </Box>
     </section>
   );
